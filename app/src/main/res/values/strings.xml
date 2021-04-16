@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">MyJetpackProSubmission</string>
+    <string name="app_name">Movies App</string>
+    <string name="app_icon">App Icon</string>
 </resources>
