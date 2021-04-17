@@ -14,6 +14,7 @@ android {
         versionCode 1
         versionName "1.0"
 
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -39,6 +40,8 @@ dependencies {
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "androidx.fragment:fragment-ktx:$coreKtxVersion"
+    implementation "androidx.activity:activity-ktx: $coreKtxVersion"
     implementation "com.github.yogacp:android-viewbinding:$viewBindingLibVersion"
 
     //ui
@@ -47,6 +50,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //testing
     testImplementation "junit:junit:$junitVersion"

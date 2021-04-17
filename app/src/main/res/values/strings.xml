@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">Movies App</string>
     <string name="app_icon">App Icon</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome">Welcome.</string>
+    <string name="app_description">Millions of movies, Tv shows and people to discover.</string>
+    <string name="movies">Movies</string>
+    <string name="tv_shows">Tv Shows</string>
+    <string name="poster">Poster</string>
+    <string name="arrow_right">Arrow Right</string>
+    <string name="overview">Overview</string>
+    <string name="detail_page">Detail Page</string>
+
+    <string-array name="main_tab_title">
+        <item>@string/movies</item>
+        <item>@string/tv_shows</item>
+    </string-array>
+
 </resources>

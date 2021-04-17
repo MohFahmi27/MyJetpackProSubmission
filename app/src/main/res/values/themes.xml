@@ -13,7 +13,7 @@
     <style name="Theme.MyJetpackProSubmission.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">@color/primaryColor</item>
+        <item name="android:windowBackground">@color/primaryDarkColor</item>
     </style>
 
     <style name="DefaultTextView" parent="Widget.AppCompat.TextView">

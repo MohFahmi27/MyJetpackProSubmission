@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primaryColor">
+
+    <ImageView
+        android:id="@+id/img_poster"
+        android:layout_width="90dp"
+        android:layout_height="140dp"
+        android:layout_margin="@dimen/dimen_standard"
+        android:contentDescription="@string/poster"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/poster_alita" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/DefaultTextView"
+        android:layout_width="0dp"
+        android:layout_marginStart="@dimen/dimen_standard"
+        android:layout_marginEnd="@dimen/dimen_large"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_poster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/img_poster"
+        app:layout_constraintTop_toTopOf="@+id/img_poster"
+        app:layout_constraintVertical_bias="0.13"
+        tools:text="Mortal Kombat Legends: Scorpion's Revenge" />
+
+    <TextView
+        android:id="@+id/tv_rating"
+        style="@style/DefaultTextView"
+        android:layout_marginTop="@dimen/dimen_standard"
+        android:textColor="@color/secondaryColor"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/ic_star_secondary_color"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        tools:text="8.9" />
+
+    <TextView
+        android:id="@+id/tv_release_date"
+        style="@style/DefaultTextView"
+        android:layout_marginTop="@dimen/dimen_small"
+        android:layout_marginEnd="@dimen/dimen_standard"
+        android:layout_marginBottom="@dimen/dimen_standard"
+        android:textColor="@color/secondaryColor"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_rating"
+        app:layout_constraintTop_toBottomOf="@+id/tv_rating"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="2021-03-03" />
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginHorizontal="@dimen/dimen_standard"
+        android:contentDescription="@string/arrow_right"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_release_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_rating"
+        app:layout_constraintTop_toTopOf="@+id/tv_title"
+        app:srcCompat="@drawable/ic_right_arrow_secondary_color" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
