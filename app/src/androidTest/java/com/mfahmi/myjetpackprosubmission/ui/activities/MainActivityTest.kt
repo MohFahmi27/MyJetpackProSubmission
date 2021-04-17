@@ -1,0 +1,3 @@
+package com.mfahmi.myjetpackprosubmission.ui.activities
+
+class MainActivityTest

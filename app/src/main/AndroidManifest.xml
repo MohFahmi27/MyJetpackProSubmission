@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyJetpackProSubmission"
         tools:ignore="AllowBackup">
-        <activity android:name=".ui.activities.DetailActivity" />
+        <activity
+            android:name=".ui.activities.DetailActivity"
+            android:theme="@style/Theme.MyJetpackProSubmission.NoActionBar" />
         <activity
             android:name=".ui.activities.SplashActivity"
             android:theme="@style/Theme.MyJetpackProSubmission.NoActionBar">

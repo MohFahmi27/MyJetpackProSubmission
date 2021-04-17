@@ -9,14 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mfahmi.myjetpackprosubmission.databinding.ItemsDataLayoutBinding
 import com.mfahmi.myjetpackprosubmission.models.MoviesEntity
 import com.mfahmi.myjetpackprosubmission.ui.activities.DetailActivity
+import com.mfahmi.myjetpackprosubmission.ui.fragments.MoviesFragment
 import com.mfahmi.myjetpackprosubmission.utils.CustomOnItemClickListener
 import com.mfahmi.myjetpackprosubmission.utils.ViewUtils
 
-class MoviesRecyclerviewAdapter(private val context: Context, private val listItems:ArrayList<MoviesEntity>) :
-    RecyclerView.Adapter<MoviesRecyclerviewAdapter.MainRecyclerviewViewHolder>() {
+class MoviesRecyclerviewAdapter(private val context: Context, private val listItems: ArrayList<MoviesEntity>) :
+        RecyclerView.Adapter<MoviesRecyclerviewAdapter.MainRecyclerviewViewHolder>() {
 
     inner class MainRecyclerviewViewHolder(private val binding: ItemsDataLayoutBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+            RecyclerView.ViewHolder(binding.root) {
         fun bind(movies: MoviesEntity) {
             with(binding) {
                 ViewUtils.setGlide(context, movies.moviePosterPath, imgPoster)
@@ -25,14 +26,12 @@ class MoviesRecyclerviewAdapter(private val context: Context, private val listIt
                 tvReleaseDate.text = movies.movieReleaseDate
             }
             itemView.setOnClickListener(
-                CustomOnItemClickListener(
-                    adapterPosition,
-                    object : CustomOnItemClickListener.OnItemClickCallback {
+                    CustomOnItemClickListener(adapterPosition, object : CustomOnItemClickListener.OnItemClickCallback {
                         override fun onItemClicked(view: View, position: Int) {
-                            Intent(
-                                itemView.context,
-                                DetailActivity::class.java
-                            ).run { itemView.context.startActivity(this) }
+                            Intent(itemView.context, DetailActivity::class.java)
+                                    .apply { putExtra(DetailActivity.EXTRA_DETAIL_ID, movies.movieId) }
+                                    .apply { putExtra(DetailActivity.EXTRA_TYPE, MoviesFragment::class.java.simpleName) }
+                                    .run { itemView.context.startActivity(this) }
                         }
                     })
             )
@@ -40,12 +39,12 @@ class MoviesRecyclerviewAdapter(private val context: Context, private val listIt
     }
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
+            parent: ViewGroup,
+            viewType: Int
     ): MainRecyclerviewViewHolder {
         return MainRecyclerviewViewHolder(
-            ItemsDataLayoutBinding
-                .inflate(LayoutInflater.from(parent.context), parent, false)
+                ItemsDataLayoutBinding
+                        .inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 

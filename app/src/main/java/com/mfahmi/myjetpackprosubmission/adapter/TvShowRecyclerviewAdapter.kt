@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mfahmi.myjetpackprosubmission.databinding.ItemsDataLayoutBinding
 import com.mfahmi.myjetpackprosubmission.models.TvShowEntity
 import com.mfahmi.myjetpackprosubmission.ui.activities.DetailActivity
+import com.mfahmi.myjetpackprosubmission.ui.fragments.TvShowFragment
 import com.mfahmi.myjetpackprosubmission.utils.CustomOnItemClickListener
 import com.mfahmi.myjetpackprosubmission.utils.ViewUtils
 
@@ -32,10 +33,10 @@ class TvShowRecyclerviewAdapter(
                     adapterPosition,
                     object : CustomOnItemClickListener.OnItemClickCallback {
                         override fun onItemClicked(view: View, position: Int) {
-                            Intent(
-                                itemView.context,
-                                DetailActivity::class.java
-                            ).run { itemView.context.startActivity(this) }
+                            Intent(itemView.context, DetailActivity::class.java)
+                                    .apply { putExtra(DetailActivity.EXTRA_DETAIL_ID, tvShows.tvShowId) }
+                                    .apply { putExtra(DetailActivity.EXTRA_TYPE, TvShowFragment::class.java.simpleName) }
+                                    .run { itemView.context.startActivity(this) }
                         }
                     })
             )
