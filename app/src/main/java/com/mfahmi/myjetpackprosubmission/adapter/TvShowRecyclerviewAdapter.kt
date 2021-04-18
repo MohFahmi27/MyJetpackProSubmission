@@ -34,9 +34,11 @@ class TvShowRecyclerviewAdapter(
                     object : CustomOnItemClickListener.OnItemClickCallback {
                         override fun onItemClicked(view: View, position: Int) {
                             Intent(itemView.context, DetailActivity::class.java)
-                                    .apply { putExtra(DetailActivity.EXTRA_DETAIL_ID, tvShows.tvShowId) }
-                                    .apply { putExtra(DetailActivity.EXTRA_TYPE, TvShowFragment::class.java.simpleName) }
-                                    .run { itemView.context.startActivity(this) }
+                                    .apply {
+                                        putExtra(DetailActivity.EXTRA_DETAIL_ID, tvShows.tvShowId)
+                                        putExtra(DetailActivity.EXTRA_TYPE, TvShowFragment::class.java.simpleName)
+                                        itemView.context.startActivity(this)
+                                    }
                         }
                     })
             )

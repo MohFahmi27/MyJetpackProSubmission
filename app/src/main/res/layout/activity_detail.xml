@@ -34,8 +34,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:srcCompat="@drawable/poster_alita" />
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:id="@+id/imageView3"
@@ -193,8 +192,7 @@
                         style="@style/DefaultTextView"
                         android:layout_width="match_parent"
                         android:layout_marginTop="@dimen/dimen_small"
-                        android:textColor="@color/secondaryTextColor"
-                        tools:text="Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. But when an evil force threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, that same evil has returned and it’s up to a lone warrior, Raya, to track down the legendary last dragon to restore the fractured land and its divided people." />
+                        android:textColor="@color/secondaryTextColor" />
 
                 </LinearLayout>
 

@@ -29,9 +29,11 @@ class MoviesRecyclerviewAdapter(private val context: Context, private val listIt
                     CustomOnItemClickListener(adapterPosition, object : CustomOnItemClickListener.OnItemClickCallback {
                         override fun onItemClicked(view: View, position: Int) {
                             Intent(itemView.context, DetailActivity::class.java)
-                                    .apply { putExtra(DetailActivity.EXTRA_DETAIL_ID, movies.movieId) }
-                                    .apply { putExtra(DetailActivity.EXTRA_TYPE, MoviesFragment::class.java.simpleName) }
-                                    .run { itemView.context.startActivity(this) }
+                                    .apply {
+                                        putExtra(DetailActivity.EXTRA_DETAIL_ID, movies.movieId)
+                                        putExtra(DetailActivity.EXTRA_TYPE, MoviesFragment::class.java.simpleName)
+                                        itemView.context.startActivity(this)
+                                    }
                         }
                     })
             )
