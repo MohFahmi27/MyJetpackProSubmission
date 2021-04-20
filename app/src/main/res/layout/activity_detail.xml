@@ -10,7 +10,6 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primaryDarkColor"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -54,7 +53,6 @@
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="24sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +67,6 @@
                     android:layout_marginBottom="@dimen/dimen_standard"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="16sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/tv_title_detail"
                     app:layout_constraintStart_toStartOf="@+id/tv_title_detail"
@@ -96,7 +93,6 @@
                     android:textAlignment="center"
                     android:textColor="@color/secondaryTextColor"
                     android:textSize="17sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                     app:layout_constraintEnd_toEndOf="@+id/imageView2"
                     app:layout_constraintStart_toStartOf="@+id/imageView2"
@@ -116,9 +112,10 @@
                     android:id="@+id/btn_back_detail"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_marginEnd="@dimen/dimen_super_small"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/app_icon"
-                    android:src="@drawable/ic_left_arrow_white" />
+                    android:src="@drawable/ic_left_arrow_secondary_color" />
 
                 <ImageView
                     android:layout_width="30dp"
@@ -131,7 +128,6 @@
                     android:id="@+id/tv_toolbar_name"
                     style="@style/DefaultTextView"
                     android:textColor="@color/primaryTextColor"
-                    android:textStyle="bold"
                     tools:text="Alita Battle Angel" />
 
             </androidx.appcompat.widget.Toolbar>
@@ -157,7 +153,6 @@
                 android:layout_marginTop="@dimen/dimen_large"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="16sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -184,8 +179,7 @@
                         style="@style/DefaultTextView"
                         android:text="@string/overview"
                         android:textColor="@color/secondaryTextColor"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
+                        android:textSize="17sp" />
 
                     <TextView
                         android:id="@+id/tv_overview"

@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:background="@color/primaryColor"
-    tools:context=".ui.activities.SplashActivity"
-    tools:viewBindingIgnore="true">
+    tools:context=".ui.activities.SplashActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -21,12 +20,12 @@
         app:srcCompat="@drawable/ic_movies_icon_app" />
 
     <TextView
+        android:id="@+id/tv_splash_screen"
         style="@style/DefaultTextView"
         android:layout_marginTop="@dimen/dimen_large"
         android:text="@string/app_name"
         android:textColor="@color/secondaryColor"
         android:textSize="23sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />

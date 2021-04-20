@@ -19,8 +19,7 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvMovies.layoutManager = LinearLayoutManager(context)
-        binding.rvMovies.adapter =
-            MoviesRecyclerviewAdapter(requireContext(), viewModel.getMovies())
+        binding.rvMovies.adapter = MoviesRecyclerviewAdapter(viewModel.getMovies())
     }
 
 }

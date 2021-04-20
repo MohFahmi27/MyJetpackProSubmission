@@ -73,7 +73,7 @@ object MoviesRepository {
             ),
             MoviesEntity(
                 458576,
-                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6KErczPBROQty7QoIsaa6wJYXZi.jpg",
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1UCOF11QCw8kcqvce8LKOO6pimh.jpg",
                 "Monster Hunter",
                 "2020-12-03",
                 7.1,

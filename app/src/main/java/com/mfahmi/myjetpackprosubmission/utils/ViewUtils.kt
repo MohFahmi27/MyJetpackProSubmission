@@ -1,23 +1,35 @@
 package com.mfahmi.myjetpackprosubmission.utils
 
-import android.content.Context
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.mfahmi.myjetpackprosubmission.R
 
-object ViewUtils {
-    internal fun setAnimation(context: Context, view: View) {
-        val animation = AnimationUtils.loadAnimation(context, R.anim.recyclerview_anim_items)
-        view.startAnimation(animation)
-    }
+internal fun View.setAnimationRecyclerView() {
+    startAnimation(AnimationUtils.loadAnimation(context, R.anim.recyclerview_anim_items))
+}
 
-    internal fun setGlide(context: Context, urlPath: String, imageView: ImageView) {
-        Glide.with(context).load(urlPath)
-            .apply(RequestOptions().override(90, 140))
-            .apply(RequestOptions().transform(RoundedCorners(15))).into(imageView)
-    }
+internal fun ImageView.setGlide(urlPath: String) {
+    Glide.with(context).load(urlPath).apply(RequestOptions().override(100, 150))
+            .apply(RequestOptions().transform(RoundedCorners(10))).into(this)
+}
+
+internal fun View.slideUpAnimation(animTime: Long, startOffset: Long) {
+    startAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_up).apply {
+        duration = animTime
+        interpolator = FastOutSlowInInterpolator()
+        this.startOffset = startOffset
+    })
+}
+
+internal fun View.slideDownAnimation(animTime: Long, startOffset: Long) {
+    startAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_down).apply {
+        duration = animTime
+        interpolator = FastOutSlowInInterpolator()
+        this.startOffset = startOffset
+    })
 }
