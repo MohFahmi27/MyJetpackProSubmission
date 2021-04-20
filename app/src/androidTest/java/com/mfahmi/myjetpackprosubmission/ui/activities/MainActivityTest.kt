@@ -27,13 +27,15 @@ class MainActivityTest {
 
     @Test
     fun testDetailViewDataMovie() {
-        val getMovieList = MoviesRepository.getMoviesData()
+        val getMovieList = MoviesRepository.getMoviesData()[0]
         onView(withId(R.id.rv_movies)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.tv_toolbar_name)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_toolbar_name)).check(matches(withText(getMovieList[0].movieTitle)))
-        onView(withId(R.id.tv_title_detail)).check(matches(withText(getMovieList[0].movieTitle)))
-        onView(withId(R.id.tv_release_date)).check(matches(withText(getMovieList[0].movieReleaseDate)))
-        onView(withId(R.id.tv_rating_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_toolbar_name)).check(matches(withText(getMovieList.movieTitle)))
+        onView(withId(R.id.tv_title_detail)).check(matches(withText(getMovieList.movieTitle)))
+        onView(withId(R.id.tv_release_date)).check(matches(withText(getMovieList.movieReleaseDate)))
+        onView(withId(R.id.tv_rating_detail)).check(matches(withText(getMovieList.movieRating.toString())))
+        onView(withId(R.id.tv_genre)).check(matches(withText(getMovieList.movieGenres.toString())))
+        onView(withId(R.id.tv_overview)).check(matches(withText(getMovieList.movieOverview)))
     }
 
     @Test

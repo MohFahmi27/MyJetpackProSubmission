@@ -20,9 +20,7 @@ class MainActivity : AppCompatActivity() {
         val tabTitle = resources.getStringArray(R.array.main_tab_title)
         binding.viewPagerMain.adapter =
             MainPagerAdapter(this, tabTitle)
-        TabLayoutMediator(
-            binding.tabLayoutMain,
-            binding.viewPagerMain
-        ) { tab, position -> tab.text = tabTitle[position] }.attach()
+        TabLayoutMediator(binding.tabLayoutMain,binding.viewPagerMain) {
+            tab, position -> tab.text = tabTitle[position] }.attach()
     }
 }
