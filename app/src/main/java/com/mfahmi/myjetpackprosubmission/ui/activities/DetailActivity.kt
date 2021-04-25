@@ -40,7 +40,6 @@ class DetailActivity : AppCompatActivity() {
 
     private fun populateMovieView(movieEntity: MoviesEntity) {
         with(binding) {
-            tvToolbarName.text = movieEntity.movieTitle
             Glide.with(this@DetailActivity).load(movieEntity.moviePosterPath)
                     .apply(RequestOptions().transform(RoundedCorners(15)))
                     .into(imgPosterDetail)
@@ -54,7 +53,6 @@ class DetailActivity : AppCompatActivity() {
 
     private fun populateTvShowView(tvShowEntity: TvShowEntity) {
         with(binding) {
-            tvToolbarName.text = tvShowEntity.tvShowTitle
             Glide.with(this@DetailActivity).load(tvShowEntity.tvShowPosterPath)
                     .apply(RequestOptions().transform(RoundedCorners(15)))
                     .into(imgPosterDetail)

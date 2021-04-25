@@ -111,20 +111,6 @@
                     android:contentDescription="@string/app_icon"
                     android:src="@drawable/ic_left_arrow_secondary_color" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="@dimen/dimen_small"
-                    android:contentDescription="@string/app_icon"
-                    app:srcCompat="@drawable/ic_movies_icon_app" />
-
-                <TextView
-                    android:id="@+id/tv_toolbar_name"
-                    style="@style/DefaultTextView"
-                    android:textSize="17sp"
-                    android:textColor="@color/secondaryColor"
-                    tools:text="Alita Battle Angel" />
-
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

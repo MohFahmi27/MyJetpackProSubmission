@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="@color/primaryDarkColor"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                 <ImageView
                     android:id="@+id/img_poster_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="220dp"
                     android:contentDescription="@string/app_icon"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +42,6 @@
                     android:text="@string/welcome"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="20sp"
-                    
                     app:layout_constraintBottom_toBottomOf="@id/img_poster_detail"
                     app:layout_constraintEnd_toEndOf="@id/img_poster_detail"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -57,7 +56,7 @@
                     android:text="@string/app_description"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="15sp"
-                    
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/tv_title_detail"
@@ -69,21 +68,20 @@
                 android:id="@+id/toolbar_main"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin">
+                app:layout_scrollFlags="scroll">
 
                 <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:contentDescription="@string/app_icon"
                     app:srcCompat="@drawable/ic_movies_icon_app" />
 
                 <TextView
                     style="@style/DefaultTextView"
-                    android:layout_marginStart="@dimen/dimen_super_large"
+                    android:layout_marginStart="@dimen/dimen_large"
                     android:text="@string/app_name"
                     android:textColor="@color/primaryTextColor"
-                    android:textSize="20sp"
-                     />
+                    android:textSize="17sp" />
 
             </androidx.appcompat.widget.Toolbar>
 

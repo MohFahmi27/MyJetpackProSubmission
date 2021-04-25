@@ -13,9 +13,9 @@ internal fun View.setAnimationRecyclerView() {
     startAnimation(AnimationUtils.loadAnimation(context, R.anim.recyclerview_anim_items))
 }
 
-internal fun ImageView.setGlide(urlPath: String) {
-    Glide.with(context).load(urlPath).apply(RequestOptions().override(100, 150))
-            .apply(RequestOptions().transform(RoundedCorners(10))).into(this)
+internal fun ImageView.setRoundedGlide(urlPath: String) {
+    Glide.with(context).load(urlPath).apply(RequestOptions().override(120, 150)).apply(RequestOptions()
+            .transform(RoundedCorners(10))).into(this)
 }
 
 internal fun View.slideUpAnimation(animTime: Long, startOffset: Long) {

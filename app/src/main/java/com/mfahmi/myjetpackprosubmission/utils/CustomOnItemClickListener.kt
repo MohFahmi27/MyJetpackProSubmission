@@ -12,6 +12,6 @@ class CustomOnItemClickListener(
     }
 
     override fun onClick(v: View?) {
-        onItemClickCallback.onItemClicked(v!!, position)
+        onItemClickCallback.onItemClicked(v as View, position)
     }
 }

@@ -11,7 +11,7 @@ import com.mfahmi.myjetpackprosubmission.ui.activities.DetailActivity
 import com.mfahmi.myjetpackprosubmission.ui.fragments.MoviesFragment
 import com.mfahmi.myjetpackprosubmission.utils.CustomOnItemClickListener
 import com.mfahmi.myjetpackprosubmission.utils.setAnimationRecyclerView
-import com.mfahmi.myjetpackprosubmission.utils.setGlide
+import com.mfahmi.myjetpackprosubmission.utils.setRoundedGlide
 
 class MoviesRecyclerviewAdapter(private val listItems: ArrayList<MoviesEntity>) :
         RecyclerView.Adapter<MoviesRecyclerviewAdapter.MainRecyclerviewViewHolder>() {
@@ -20,7 +20,7 @@ class MoviesRecyclerviewAdapter(private val listItems: ArrayList<MoviesEntity>) 
             RecyclerView.ViewHolder(binding.root) {
         fun bind(movies: MoviesEntity) {
             with(binding) {
-                imgPoster.setGlide(movies.moviePosterPath)
+                imgPoster.setRoundedGlide(movies.moviePosterPath)
                 tvTitle.text = movies.movieTitle
                 tvRating.text = movies.movieRating.toString()
                 tvReleaseDate.text = movies.movieReleaseDate

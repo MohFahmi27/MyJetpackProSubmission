@@ -15,7 +15,7 @@ class MainPagerAdapter(activity: AppCompatActivity, private val titleList: Array
         return when(position) {
             0 -> MoviesFragment()
             1 -> TvShowFragment()
-            else -> MoviesFragment()
+            else -> Fragment()
         }
     }
 }

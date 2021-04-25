@@ -11,7 +11,7 @@ import com.mfahmi.myjetpackprosubmission.ui.activities.DetailActivity
 import com.mfahmi.myjetpackprosubmission.ui.fragments.TvShowFragment
 import com.mfahmi.myjetpackprosubmission.utils.CustomOnItemClickListener
 import com.mfahmi.myjetpackprosubmission.utils.setAnimationRecyclerView
-import com.mfahmi.myjetpackprosubmission.utils.setGlide
+import com.mfahmi.myjetpackprosubmission.utils.setRoundedGlide
 
 class TvShowRecyclerviewAdapter(private var listItems: ArrayList<TvShowEntity>) :
         RecyclerView.Adapter<TvShowRecyclerviewAdapter.TvShowViewHolder>() {
@@ -20,7 +20,7 @@ class TvShowRecyclerviewAdapter(private var listItems: ArrayList<TvShowEntity>) 
             RecyclerView.ViewHolder(binding.root) {
         fun bind(tvShows: TvShowEntity) {
             with(binding) {
-                imgPoster.setGlide(tvShows.tvShowPosterPath)
+                imgPoster.setRoundedGlide(tvShows.tvShowPosterPath)
                 tvTitle.text = tvShows.tvShowTitle
                 tvRating.text = tvShows.tvShowRating.toString()
                 tvReleaseDate.text = tvShows.tvShowReleaseDate
