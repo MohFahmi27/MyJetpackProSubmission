@@ -1,29 +1,32 @@
 package com.mfahmi.myjetpackprosubmission.adapter
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mfahmi.myjetpackprosubmission.databinding.ItemsDataLayoutBinding
-import com.mfahmi.myjetpackprosubmission.models.TvShowEntity
+import com.mfahmi.myjetpackprosubmission.models.ResponseTvShow
 import com.mfahmi.myjetpackprosubmission.ui.activities.DetailActivity
 import com.mfahmi.myjetpackprosubmission.ui.fragments.TvShowFragment
 import com.mfahmi.myjetpackprosubmission.utils.CustomOnItemClickListener
 import com.mfahmi.myjetpackprosubmission.utils.setAnimationRecyclerView
 import com.mfahmi.myjetpackprosubmission.utils.setRoundedGlide
 
-class TvShowRecyclerviewAdapter(private var listItems: ArrayList<TvShowEntity>) :
+class TvShowRecyclerviewAdapter(private var listItems: List<ResponseTvShow>) :
         RecyclerView.Adapter<TvShowRecyclerviewAdapter.TvShowViewHolder>() {
 
     inner class TvShowViewHolder(private val binding: ItemsDataLayoutBinding) :
             RecyclerView.ViewHolder(binding.root) {
-        fun bind(tvShows: TvShowEntity) {
+        @SuppressLint("SetTextI18n")
+        fun bind(tvShows: ResponseTvShow) {
             with(binding) {
-                imgPoster.setRoundedGlide(tvShows.tvShowPosterPath)
-                tvTitle.text = tvShows.tvShowTitle
-                tvRating.text = tvShows.tvShowRating.toString()
-                tvReleaseDate.text = tvShows.tvShowReleaseDate
+                imgPoster.setRoundedGlide(tvShows.posterPath)
+                tvTitle.text = tvShows.name
+                tvRating.text = tvShows.voteAverage.toString()
+                tvReleaseDate.text = tvShows.firstAirDate
+                tvOverviewItems.text = "${tvShows.overview.substring(0, 15)}…"
             }
             itemView.setOnClickListener(
                     CustomOnItemClickListener(
@@ -32,7 +35,7 @@ class TvShowRecyclerviewAdapter(private var listItems: ArrayList<TvShowEntity>) 
                                 override fun onItemClicked(view: View, position: Int) {
                                     Intent(itemView.context, DetailActivity::class.java)
                                             .apply {
-                                                putExtra(DetailActivity.EXTRA_DETAIL_ID, tvShows.tvShowId)
+                                                putExtra(DetailActivity.EXTRA_DETAIL_ID, tvShows.id)
                                                 putExtra(DetailActivity.EXTRA_TYPE, TvShowFragment::class.java.simpleName)
                                                 itemView.context.startActivity(this)
                                             }

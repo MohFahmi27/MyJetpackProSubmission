@@ -15,11 +15,14 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
 
     private val binding: FragmentMoviesBinding by viewBinding()
     private val viewModel: MovieViewModel by activityViewModels()
-
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvMovies.layoutManager = LinearLayoutManager(context)
-        binding.rvMovies.adapter = MoviesRecyclerviewAdapter(viewModel.getMovies())
+
+        viewModel.getMoviesFromApi().observe(requireActivity()){
+            binding.rvMovies.layoutManager = LinearLayoutManager(requireContext())
+            binding.rvMovies.adapter = MoviesRecyclerviewAdapter(it.results)
+        }
     }
 
 }

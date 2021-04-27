@@ -1,6 +1,13 @@
 package com.mfahmi.myjetpackprosubmission.repositories
 
+import androidx.lifecycle.LiveData
+import com.mfahmi.myjetpackprosubmission.api.ApiKey
+import com.mfahmi.myjetpackprosubmission.api.ApiRetrofit
 import com.mfahmi.myjetpackprosubmission.models.MoviesEntity
+import com.mfahmi.myjetpackprosubmission.models.ResponseItemMovies
+import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 
 object MoviesRepository {
     fun getMoviesData(): ArrayList<MoviesEntity> {
@@ -116,5 +123,28 @@ object MoviesRepository {
                 )
             )
         )
+    }
+    
+    var job: CompletableJob? = null
+    fun getMovies(): LiveData<ResponseItemMovies> {
+        job = Job()
+        return object : LiveData<ResponseItemMovies>() {
+            override fun onActive() {
+                super.onActive()
+                job?.let {
+                    CoroutineScope(IO + it).launch {
+                        val movies = ApiRetrofit.apiService.getPopularMovie(ApiKey.API_KEY)
+                        withContext(Main) {
+                            value = movies
+                            it.complete()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun cancelJob() {
+        job?.cancel()
     }
 }

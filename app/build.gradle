@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.secrets_gradle_plugin' version '0.6'
 }
 
 android {
@@ -38,9 +39,8 @@ android {
 
 dependencies {
     //kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.core:core-ktx:$coreKtxVersion"
-    implementation "androidx.fragment:fragment-ktx:$coreKtxVersion"
+    implementation "androidx.fragment:fragment-ktx:$coreKtxVersionFragment"
     implementation "androidx.activity:activity-ktx: $coreKtxVersion"
     implementation "com.github.yogacp:android-viewbinding:$viewBindingLibVersion"
 
@@ -51,15 +51,30 @@ dependencies {
     implementation "com.google.android.material:material:$materialVersion"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.test.espresso:espresso-idling-resource:$idleResourceVersion"
+
+    //network
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$loggingInteceptor"
 
     //testing
     testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
+    testImplementation "androidx.arch.core:core-testing:$androidCoreTestVersion"
     androidTestImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
     androidTestImplementation "androidx.test:runner:$androidXTestVersion"
     androidTestImplementation "androidx.test:rules:$androidXTestVersion"
     androidTestImplementation "androidx.test.ext:junit-ktx:$junitExtversion"
+
+    //coroutines
+    def coroutines_version = "1.2.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
 
     //architecture component
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"

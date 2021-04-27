@@ -1,6 +1,11 @@
 package com.mfahmi.myjetpackprosubmission.repositories
 
+import androidx.lifecycle.LiveData
+import com.mfahmi.myjetpackprosubmission.api.ApiKey
+import com.mfahmi.myjetpackprosubmission.api.ApiRetrofit
+import com.mfahmi.myjetpackprosubmission.models.ResponseItemTvShows
 import com.mfahmi.myjetpackprosubmission.models.TvShowEntity
+import kotlinx.coroutines.*
 
 object TvShowRepository {
     fun getTvShowData(): ArrayList<TvShowEntity> {
@@ -117,4 +122,28 @@ object TvShowRepository {
             )
         )
     }
+
+    var job: CompletableJob? = null
+    fun getTvShows(): LiveData<ResponseItemTvShows> {
+        job = Job()
+        return object : LiveData<ResponseItemTvShows>() {
+            override fun onActive() {
+                super.onActive()
+                job?.let {
+                    CoroutineScope(Dispatchers.IO + it).launch {
+                        val tvShows = ApiRetrofit.apiService.getPopularTvShow(ApiKey.API_KEY)
+                        withContext(Dispatchers.Main) {
+                            value = tvShows
+                            it.complete()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun cancelJob() {
+        job?.cancel()
+    }
+
 }

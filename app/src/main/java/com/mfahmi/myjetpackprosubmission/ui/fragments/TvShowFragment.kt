@@ -18,8 +18,11 @@ class TvShowFragment : Fragment(R.layout.fragment_tv_show) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvTvShows.layoutManager = LinearLayoutManager(context)
-        binding.rvTvShows.adapter = TvShowRecyclerviewAdapter(viewModel.getTvShows())
+
+        viewModel.getTvShowsFromApi().observe(requireActivity()){
+            binding.rvTvShows.layoutManager = LinearLayoutManager(requireContext())
+            binding.rvTvShows.adapter = TvShowRecyclerviewAdapter(it.results)
+        }
     }
 
 }

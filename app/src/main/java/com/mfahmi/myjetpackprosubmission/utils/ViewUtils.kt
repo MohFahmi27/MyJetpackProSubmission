@@ -14,20 +14,12 @@ internal fun View.setAnimationRecyclerView() {
 }
 
 internal fun ImageView.setRoundedGlide(urlPath: String) {
-    Glide.with(context).load(urlPath).apply(RequestOptions().override(120, 150)).apply(RequestOptions()
+    Glide.with(context).load("https://image.tmdb.org/t/p/w500/$urlPath").apply(RequestOptions().override(120, 150)).apply(RequestOptions()
             .transform(RoundedCorners(10))).into(this)
 }
 
-internal fun View.slideUpAnimation(animTime: Long, startOffset: Long) {
-    startAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_up).apply {
-        duration = animTime
-        interpolator = FastOutSlowInInterpolator()
-        this.startOffset = startOffset
-    })
-}
-
-internal fun View.slideDownAnimation(animTime: Long, startOffset: Long) {
-    startAnimation(AnimationUtils.loadAnimation(context, R.anim.slide_down).apply {
+internal fun View.setAnimation(animationId: Int ,animTime: Long, startOffset: Long) {
+    startAnimation(AnimationUtils.loadAnimation(context, animationId).apply {
         duration = animTime
         interpolator = FastOutSlowInInterpolator()
         this.startOffset = startOffset

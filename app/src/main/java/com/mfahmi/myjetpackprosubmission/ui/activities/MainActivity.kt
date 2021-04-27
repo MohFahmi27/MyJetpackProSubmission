@@ -3,10 +3,13 @@ package com.mfahmi.myjetpackprosubmission.ui.activities
 import android.os.Bundle
 import android.viewbinding.library.activity.viewBinding
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mfahmi.myjetpackprosubmission.R
 import com.mfahmi.myjetpackprosubmission.adapter.MainPagerAdapter
 import com.mfahmi.myjetpackprosubmission.databinding.ActivityMainBinding
+import com.mfahmi.myjetpackprosubmission.repositories.MoviesRepository
+import com.mfahmi.myjetpackprosubmission.repositories.TvShowRepository
 
 class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by viewBinding()
@@ -17,10 +20,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        val tabTitle = resources.getStringArray(R.array.main_tab_title)
         binding.viewPagerMain.adapter =
-            MainPagerAdapter(this, tabTitle)
-        TabLayoutMediator(binding.tabLayoutMain,binding.viewPagerMain) {
-            tab, position -> tab.text = tabTitle[position] }.attach()
+            MainPagerAdapter(supportFragmentManager, lifecycle)
+        binding.viewPagerMain.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+
+        val tabTitle = resources.getStringArray(R.array.main_tab_title)
+        TabLayoutMediator(
+            binding.tabLayoutMain, binding.viewPagerMain
+        ) { tab, position -> tab.text = tabTitle[position] }.attach()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        MoviesRepository.cancelJob()
+        TvShowRepository.cancelJob()
     }
 }
