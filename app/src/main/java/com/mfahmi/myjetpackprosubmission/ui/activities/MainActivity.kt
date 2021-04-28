@@ -8,8 +8,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.mfahmi.myjetpackprosubmission.R
 import com.mfahmi.myjetpackprosubmission.adapter.MainPagerAdapter
 import com.mfahmi.myjetpackprosubmission.databinding.ActivityMainBinding
-import com.mfahmi.myjetpackprosubmission.repositories.MoviesRepository
-import com.mfahmi.myjetpackprosubmission.repositories.TvShowRepository
 
 class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by viewBinding()
@@ -30,9 +28,4 @@ class MainActivity : AppCompatActivity() {
         ) { tab, position -> tab.text = tabTitle[position] }.attach()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        MoviesRepository.cancelJob()
-        TvShowRepository.cancelJob()
-    }
 }

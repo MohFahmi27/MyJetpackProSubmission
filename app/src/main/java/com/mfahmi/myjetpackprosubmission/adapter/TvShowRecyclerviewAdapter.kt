@@ -1,13 +1,13 @@
 package com.mfahmi.myjetpackprosubmission.adapter
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mfahmi.myjetpackprosubmission.R
 import com.mfahmi.myjetpackprosubmission.databinding.ItemsDataLayoutBinding
-import com.mfahmi.myjetpackprosubmission.models.ResponseTvShow
+import com.mfahmi.myjetpackprosubmission.models.tvshow.ResponseTvShow
 import com.mfahmi.myjetpackprosubmission.ui.activities.DetailActivity
 import com.mfahmi.myjetpackprosubmission.ui.fragments.TvShowFragment
 import com.mfahmi.myjetpackprosubmission.utils.CustomOnItemClickListener
@@ -19,14 +19,14 @@ class TvShowRecyclerviewAdapter(private var listItems: List<ResponseTvShow>) :
 
     inner class TvShowViewHolder(private val binding: ItemsDataLayoutBinding) :
             RecyclerView.ViewHolder(binding.root) {
-        @SuppressLint("SetTextI18n")
         fun bind(tvShows: ResponseTvShow) {
             with(binding) {
                 imgPoster.setRoundedGlide(tvShows.posterPath)
                 tvTitle.text = tvShows.name
                 tvRating.text = tvShows.voteAverage.toString()
                 tvReleaseDate.text = tvShows.firstAirDate
-                tvOverviewItems.text = "${tvShows.overview.substring(0, 15)}…"
+                tvOverviewItems.text = itemView.context.getString(R.string.overview_format,
+                        tvShows.overview.substring(0, 25))
             }
             itemView.setOnClickListener(
                     CustomOnItemClickListener(

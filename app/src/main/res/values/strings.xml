@@ -10,6 +10,10 @@
     <string name="arrow_right">Arrow Right</string>
     <string name="overview">Overview</string>
     <string name="detail_page">Detail Page</string>
+    <string name="overview_format">%s…</string>
+    <string name="status_format">Status: %s</string>
+    <string name="duration_format_movie">Duration: %d mnt</string>
+    <string name="duration_format_tv_show">Duration: %d eps</string>
 
     <string-array name="main_tab_title">
         <item>@string/movies</item>

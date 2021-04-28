@@ -9,20 +9,30 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mfahmi.myjetpackprosubmission.R
 import com.mfahmi.myjetpackprosubmission.adapter.MoviesRecyclerviewAdapter
 import com.mfahmi.myjetpackprosubmission.databinding.FragmentMoviesBinding
+import com.mfahmi.myjetpackprosubmission.di.Injection
+import com.mfahmi.myjetpackprosubmission.utils.ViewModelFactoryMovie
 import com.mfahmi.myjetpackprosubmission.viewmodels.MovieViewModel
 
 class MoviesFragment : Fragment(R.layout.fragment_movies) {
 
     private val binding: FragmentMoviesBinding by viewBinding()
-    private val viewModel: MovieViewModel by activityViewModels()
-    
+    private val viewModel: MovieViewModel by activityViewModels {
+        ViewModelFactoryMovie(Injection.movieInjectRepository())
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getMoviesFromApi().observe(requireActivity()){
+        setProgressVisibility(true)
+        viewModel.getMovies().observe(requireActivity()) {
             binding.rvMovies.layoutManager = LinearLayoutManager(requireContext())
-            binding.rvMovies.adapter = MoviesRecyclerviewAdapter(it.results)
+            binding.rvMovies.adapter = MoviesRecyclerviewAdapter(it)
+            setProgressVisibility(false)
         }
+    }
+
+    private fun setProgressVisibility(state: Boolean) {
+        if (state) binding.pgMovie.visibility = View.VISIBLE else binding.pgMovie.visibility = View.GONE
     }
 
 }

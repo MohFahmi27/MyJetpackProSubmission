@@ -32,7 +32,7 @@ class MainActivityTest {
         onView(withId(R.id.tv_title_detail)).check(matches(withText(getMovieList.movieTitle)))
         onView(withId(R.id.tv_release_date)).check(matches(withText(getMovieList.movieReleaseDate)))
         onView(withId(R.id.tv_rating_detail)).check(matches(withText(getMovieList.movieRating.toString())))
-        onView(withId(R.id.tv_genre)).check(matches(withText(getMovieList.movieGenres.toString())))
+        onView(withId(R.id.tv_tag_line)).check(matches(withText(getMovieList.movieGenres.toString())))
         onView(withId(R.id.tv_overview)).check(matches(withText(getMovieList.movieOverview)))
     }
 
@@ -44,7 +44,7 @@ class MainActivityTest {
         onView(withId(R.id.tv_title_detail)).check(matches(withText(getTvShowList[0].tvShowTitle)))
         onView(withId(R.id.tv_release_date)).check(matches(withText(getTvShowList[0].tvShowReleaseDate)))
         onView(withId(R.id.tv_rating_detail)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_genre)).check(matches(withText(getMovieList.movieGenres.toString())))
+        onView(withId(R.id.tv_tag_line)).check(matches(withText(getMovieList.movieGenres.toString())))
         onView(withId(R.id.tv_overview)).check(matches(withText(getMovieList.movieOverview)))
     }
 
