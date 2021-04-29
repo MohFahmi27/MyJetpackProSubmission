@@ -1,21 +1,16 @@
 package com.mfahmi.myjetpackprosubmission.utils
 
-import androidx.test.espresso.IdlingResource
 import androidx.test.espresso.idling.CountingIdlingResource
 
 object EspressoIdlingResource {
     private const val RESOURCE: String = "GLOBAL"
-    private val espressoTestIdlingResource = CountingIdlingResource(RESOURCE)
+    val idlingResource = CountingIdlingResource(RESOURCE)
 
     fun increment() {
-        espressoTestIdlingResource.increment()
+        idlingResource.increment()
     }
 
     fun decrement() {
-        espressoTestIdlingResource.decrement()
-    }
-
-    fun getEspressoIdlingResource(): IdlingResource {
-        return espressoTestIdlingResource
+        idlingResource.decrement()
     }
 }

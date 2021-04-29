@@ -8,10 +8,7 @@ import com.mfahmi.myjetpackprosubmission.repositories.remote.GetDetailTvShowCall
 import com.mfahmi.myjetpackprosubmission.repositories.remote.GetTvShowsCallback
 import com.mfahmi.myjetpackprosubmission.repositories.remote.RemoteRepositories
 
-class TvShowRepository private constructor(private val remoteRepositories: RemoteRepositories) {
-    companion object {
-        val getInstance by lazy { TvShowRepository(RemoteRepositories.getInstance) }
-    }
+class FakeTvShowRepository(private val remoteRepositories: RemoteRepositories) {
 
     fun getTvShowsData(): LiveData<List<ResponseTvShow>> {
         val tvShowsData = MutableLiveData<List<ResponseTvShow>>()
@@ -32,5 +29,4 @@ class TvShowRepository private constructor(private val remoteRepositories: Remot
         })
         return tvShowDetailData
     }
-
 }

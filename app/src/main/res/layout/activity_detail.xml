@@ -36,7 +36,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    tools:src="@tools:sample/backgrounds/scenic" />
+                    tools:src="@drawable/ic_placeholder_image" />
 
                 <ImageView
                     android:id="@+id/imageView3"
@@ -136,6 +136,7 @@
         android:visibility="invisible" />
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">

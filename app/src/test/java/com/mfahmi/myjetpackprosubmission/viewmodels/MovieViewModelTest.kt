@@ -1,32 +1,54 @@
 package com.mfahmi.myjetpackprosubmission.viewmodels
 
-import com.mfahmi.myjetpackprosubmission.models.MoviesEntity
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import com.mfahmi.myjetpackprosubmission.data.DataDummy
+import com.mfahmi.myjetpackprosubmission.models.movies.ResponseMovie
+import com.mfahmi.myjetpackprosubmission.repositories.MoviesRepository
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.verify
+import org.mockito.junit.MockitoJUnitRunner
 
+@RunWith(MockitoJUnitRunner::class)
 class MovieViewModelTest {
-
     private lateinit var viewModel: MovieViewModel
-    private lateinit var moviesList: ArrayList<MoviesEntity>
+
+    @get:Rule
+    var instantTaskExecutorRule = InstantTaskExecutorRule()
+
+    @Mock
+    private lateinit var moviesRepository: MoviesRepository
+
+    @Mock
+    private lateinit var observer: Observer<List<ResponseMovie>>
 
     @Before
     fun init() {
-        viewModel = MovieViewModel()
-        moviesList = viewModel.getMovies()
-    }
-
-    @Test
-    fun validateSizeInViewModelFromRepository() {
-        assertNotNull(moviesList)
-        assertEquals(10, moviesList.size)
+        viewModel = MovieViewModel(moviesRepository)
     }
 
     @Test
     fun validateDataInViewModelFromRepository() {
-//        assertEquals(moviesList, MoviesRepository.getMoviesData())
-//        assertFalse(moviesList == TvShowRepository.getTvShowData())
+        val movieDataDummy = DataDummy.getPopularMovieDummy()
+        val moviesDataLiveMock = MutableLiveData<List<ResponseMovie>>()
+        moviesDataLiveMock.value = movieDataDummy
+
+        `when`(moviesRepository.getMoviesData()).thenReturn(moviesDataLiveMock)
+        val moviesData = viewModel.getMovies().value
+        verify(moviesRepository).getMoviesData()
+        assertNotNull(moviesData)
+        assertEquals(moviesData?.size, movieDataDummy.size)
+
+        viewModel.getMovies().observeForever(observer)
+        verify(observer).onChanged(movieDataDummy)
     }
 
 }

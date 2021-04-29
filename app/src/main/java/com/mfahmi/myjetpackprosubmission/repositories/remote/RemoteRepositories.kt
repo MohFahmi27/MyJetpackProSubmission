@@ -9,11 +9,12 @@ import com.mfahmi.myjetpackprosubmission.models.movies.ResponseMovie
 import com.mfahmi.myjetpackprosubmission.models.tvshow.ResponseDetailTvShow
 import com.mfahmi.myjetpackprosubmission.models.tvshow.ResponseItemTvShows
 import com.mfahmi.myjetpackprosubmission.models.tvshow.ResponseTvShow
+import com.mfahmi.myjetpackprosubmission.utils.EspressoIdlingResource
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RemoteRepositories private constructor(private val myApiConfig: ApiConfig) {
+class RemoteRepositories(private val myApiConfig: ApiConfig) {
 
     companion object {
         private const val TAG = "RemoteRepositories"
@@ -24,9 +25,11 @@ class RemoteRepositories private constructor(private val myApiConfig: ApiConfig)
     }
 
     fun getPopularMovies(getMoviesCallback: GetMoviesCallback) {
+        EspressoIdlingResource.increment()
         myApiConfig.apiService.getPopularMovie(API_KEY).enqueue(object : Callback<ResponseItemMovies> {
             override fun onResponse(call: Call<ResponseItemMovies>, response: Response<ResponseItemMovies>) {
                 getMoviesCallback.onResponse(response.body()?.results as List<ResponseMovie>)
+                EspressoIdlingResource.decrement()
             }
 
             override fun onFailure(call: Call<ResponseItemMovies>, t: Throwable) {
@@ -36,9 +39,11 @@ class RemoteRepositories private constructor(private val myApiConfig: ApiConfig)
     }
 
     fun getDetailMovie(movieId: Int, getDetailMovieCallback: GetDetailMovieCallback) {
+        EspressoIdlingResource.increment()
         myApiConfig.apiService.getDetailMovie(movieId, API_KEY).enqueue(object : Callback<ResponseDetailMovie> {
             override fun onResponse(call: Call<ResponseDetailMovie>, response: Response<ResponseDetailMovie>) {
                 getDetailMovieCallback.onResponse(response.body() as ResponseDetailMovie)
+                EspressoIdlingResource.decrement()
             }
 
             override fun onFailure(call: Call<ResponseDetailMovie>, t: Throwable) {
@@ -48,9 +53,11 @@ class RemoteRepositories private constructor(private val myApiConfig: ApiConfig)
     }
 
     fun getPopularTvShows(getTvShowsCallback: GetTvShowsCallback) {
+        EspressoIdlingResource.increment()
         myApiConfig.apiService.getPopularTvShow(API_KEY).enqueue(object : Callback<ResponseItemTvShows> {
             override fun onResponse(call: Call<ResponseItemTvShows>, response: Response<ResponseItemTvShows>) {
                 getTvShowsCallback.onResponse(response.body()?.results as List<ResponseTvShow>)
+                EspressoIdlingResource.decrement()
             }
 
             override fun onFailure(call: Call<ResponseItemTvShows>, t: Throwable) {
@@ -61,9 +68,11 @@ class RemoteRepositories private constructor(private val myApiConfig: ApiConfig)
     }
 
     fun getDetailTvShow(tvShowId: Int, getDetailTvShowCallback: GetDetailTvShowCallback) {
+        EspressoIdlingResource.increment()
         myApiConfig.apiService.getDetailTvShow(tvShowId, API_KEY).enqueue(object : Callback<ResponseDetailTvShow> {
             override fun onResponse(call: Call<ResponseDetailTvShow>, response: Response<ResponseDetailTvShow>) {
                 getDetailTvShowCallback.onResponse(response.body() as ResponseDetailTvShow)
+                EspressoIdlingResource.decrement()
             }
 
             override fun onFailure(call: Call<ResponseDetailTvShow>, t: Throwable) {
