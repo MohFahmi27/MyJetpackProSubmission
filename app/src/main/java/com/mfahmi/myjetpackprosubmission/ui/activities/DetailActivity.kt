@@ -49,8 +49,6 @@ class DetailActivity : AppCompatActivity() {
             with(binding) {
                 Glide.with(this@DetailActivity).load("https://image.tmdb.org/t/p/w500${it.posterPath}")
                         .apply(RequestOptions().transform(RoundedCorners(15)))
-                        .placeholder(R.drawable.ic_placeholder_image)
-                        .error(R.drawable.ic_error_image)
                         .into(imgPosterDetail)
                 tvTitleDetail.text = it.title
                 tvRatingDetail.text = it.voteAverage.toString()
@@ -69,8 +67,6 @@ class DetailActivity : AppCompatActivity() {
             with(binding) {
                 Glide.with(this@DetailActivity).load("https://image.tmdb.org/t/p/w500${it.posterPath}")
                         .apply(RequestOptions().transform(RoundedCorners(15)))
-                        .placeholder(R.drawable.ic_placeholder_image)
-                        .error(R.drawable.ic_error_image)
                         .into(imgPosterDetail)
                 tvTitleDetail.text = it.name
                 tvRatingDetail.text = it.voteAverage.toString()
