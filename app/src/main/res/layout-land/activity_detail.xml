@@ -80,7 +80,7 @@
                     app:layout_constraintStart_toEndOf="@+id/img_poster_detail"
                     app:layout_constraintTop_toTopOf="@+id/img_poster_detail"
                     app:layout_constraintVertical_bias="0.78"
-                    app:srcCompat="@drawable/circle_background"
+                    app:srcCompat="@drawable/rounded_corner_background"
                     tools:ignore="ContentDescription" />
 
                 <TextView

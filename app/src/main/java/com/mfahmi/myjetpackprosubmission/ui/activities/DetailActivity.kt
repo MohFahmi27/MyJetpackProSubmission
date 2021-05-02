@@ -54,7 +54,7 @@ class DetailActivity : AppCompatActivity() {
                 tvRatingDetail.text = it.voteAverage.toString()
                 tvReleaseDate.text = it.releaseDate
                 tvTagLine.text = it.tagline
-                tvStatusDetail.text = resources.getString(R.string.status_format, it.status)
+                tvStatusDetail.text = it.status
                 tvDuration.text = resources.getString(R.string.duration_format_movie, it.runtime)
                 tvOverview.text = it.overview
                 setProgressVisibility(false)
@@ -72,7 +72,7 @@ class DetailActivity : AppCompatActivity() {
                 tvRatingDetail.text = it.voteAverage.toString()
                 tvReleaseDate.text = it.firstAirDate
                 tvTagLine.text = it.tagline
-                tvStatusDetail.text = resources.getString(R.string.status_format, it.status)
+                tvStatusDetail.text = it.status
                 tvDuration.text = resources.getString(R.string.duration_format_tv_show, it.numberOfEpisodes)
                 tvOverview.text = it.overview
                 setProgressVisibility(false)
