@@ -11,7 +11,7 @@
     <string name="overview">Overview</string>
     <string name="detail_page">Detail Page</string>
     <string name="overview_format">%s…</string>
-    <string name="status_format">Status: %s</string>
+    <string name="rating_format">%.1f /10</string>
     <string name="duration_format_movie">%d mnt</string>
     <string name="duration_format_tv_show">%d eps</string>
     <string name="status">Status</string>

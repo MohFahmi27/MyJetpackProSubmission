@@ -17,9 +17,9 @@
 
         <ImageView
             android:id="@+id/img_poster"
-            android:layout_width="120dp"
+            android:layout_width="110dp"
             android:layout_height="150dp"
-            android:layout_margin="@dimen/dimen_small"
+            android:layout_margin="@dimen/dimen_standard"
             android:contentDescription="@string/poster"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

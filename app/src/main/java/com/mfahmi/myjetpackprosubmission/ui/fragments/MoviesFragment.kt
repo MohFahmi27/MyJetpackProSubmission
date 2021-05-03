@@ -11,6 +11,7 @@ import com.mfahmi.myjetpackprosubmission.adapter.MoviesRecyclerviewAdapter
 import com.mfahmi.myjetpackprosubmission.databinding.FragmentMoviesBinding
 import com.mfahmi.myjetpackprosubmission.di.Injection
 import com.mfahmi.myjetpackprosubmission.utils.ViewModelFactoryMovie
+import com.mfahmi.myjetpackprosubmission.utils.setVisibility
 import com.mfahmi.myjetpackprosubmission.viewmodels.MovieViewModel
 
 class MoviesFragment : Fragment(R.layout.fragment_movies) {
@@ -23,16 +24,12 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setProgressVisibility(true)
+        binding.pgMovie.setVisibility(true)
         viewModel.getMovies().observe(requireActivity()) {
             binding.rvMovies.layoutManager = LinearLayoutManager(requireContext())
             binding.rvMovies.adapter = MoviesRecyclerviewAdapter(it)
-            setProgressVisibility(false)
+            binding.pgMovie.setVisibility(false)
         }
-    }
-
-    private fun setProgressVisibility(state: Boolean) {
-        if (state) binding.pgMovie.visibility = View.VISIBLE else binding.pgMovie.visibility = View.GONE
     }
 
 }

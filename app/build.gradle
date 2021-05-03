@@ -1,12 +1,14 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.google.secrets_gradle_plugin' version '0.6'
 }
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
+
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
     defaultConfig {
         applicationId "com.mfahmi.myjetpackprosubmission"
@@ -17,6 +19,7 @@ android {
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "API_KEY_TMDB", localProperties['apiKey']
     }
 
     buildTypes {

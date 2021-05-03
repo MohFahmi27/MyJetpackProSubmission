@@ -11,6 +11,7 @@ import com.mfahmi.myjetpackprosubmission.adapter.TvShowRecyclerviewAdapter
 import com.mfahmi.myjetpackprosubmission.databinding.FragmentTvShowBinding
 import com.mfahmi.myjetpackprosubmission.di.Injection
 import com.mfahmi.myjetpackprosubmission.utils.ViewModelFactoryTvShows
+import com.mfahmi.myjetpackprosubmission.utils.setVisibility
 import com.mfahmi.myjetpackprosubmission.viewmodels.TvShowViewModel
 
 class TvShowFragment : Fragment(R.layout.fragment_tv_show) {
@@ -23,16 +24,12 @@ class TvShowFragment : Fragment(R.layout.fragment_tv_show) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setProgressVisibility(true)
+        binding.pgTvShow.setVisibility(true)
         viewModel.getTvShows().observe(requireActivity()) {
             binding.rvTvShows.layoutManager = LinearLayoutManager(requireContext())
             binding.rvTvShows.adapter = TvShowRecyclerviewAdapter(it)
-            setProgressVisibility(false)
+            binding.pgTvShow.setVisibility(false)
         }
-    }
-
-    private fun setProgressVisibility(state: Boolean) {
-        if (state) binding.pgTvShow.visibility = View.VISIBLE else binding.pgTvShow.visibility = View.GONE
     }
 
 }
