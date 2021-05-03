@@ -28,7 +28,7 @@
                 <ImageView
                     android:id="@+id/img_poster_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="450dp"
+                    android:layout_height="460dp"
                     android:contentDescription="@string/app_icon"
                     android:scaleType="fitXY"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -92,8 +92,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_end="@dimen/dimen_standard"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_end="@dimen/dimen_standard" />
 
             <TextView
                 android:id="@+id/tv_title_detail"
@@ -124,8 +124,8 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="@dimen/dimen_standard"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_title_detail"
-                app:layout_constraintTop_toTopOf="@+id/tv_title_detail"
                 app:layout_constraintStart_toEndOf="@id/tv_title_detail"
+                app:layout_constraintTop_toTopOf="@+id/tv_title_detail"
                 app:srcCompat="@drawable/ic_star_secondary_color"
                 tools:ignore="ContentDescription"
                 tools:layout_editor_absoluteX="162dp" />
@@ -133,8 +133,8 @@
             <TextView
                 android:id="@+id/tv_tag_line"
                 style="@style/DefaultTextView"
-                android:layout_marginTop="@dimen/dimen_small"
                 android:layout_width="0dp"
+                android:layout_marginTop="@dimen/dimen_small"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_end"
@@ -146,8 +146,8 @@
             <TextView
                 android:id="@+id/tv_rating_detail"
                 style="@style/DefaultTextView"
-                android:textAlignment="center"
                 android:layout_marginEnd="@dimen/dimen_small"
+                android:textAlignment="center"
                 android:textColor="@color/secondaryColor"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView5"

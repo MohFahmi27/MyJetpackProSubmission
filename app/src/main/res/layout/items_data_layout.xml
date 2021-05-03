@@ -36,7 +36,7 @@
             android:layout_marginStart="@dimen/dimen_standard"
             android:layout_marginEnd="@dimen/dimen_large"
             android:textColor="@color/primaryTextColor"
-            android:textSize="15sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/img_poster"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

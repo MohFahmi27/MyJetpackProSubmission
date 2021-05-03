@@ -7,9 +7,6 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
-    def localProperties = new Properties()
-    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
-
     defaultConfig {
         applicationId "com.mfahmi.myjetpackprosubmission"
         minSdkVersion 21
@@ -19,7 +16,7 @@ android {
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "API_KEY_TMDB", localProperties['apiKey']
+        buildConfigField "String", "API_KEY_TMDB", '"9cfb5fd629818c036aa2e0a15c0c1a58"'
     }
 
     buildTypes {
@@ -75,9 +72,8 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit-ktx:$junitExtversion"
 
     //coroutines
-    def coroutines_version = "1.2.1"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCoreVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesAndroidVersion"
 
     //architecture component
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"

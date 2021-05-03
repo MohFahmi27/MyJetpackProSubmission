@@ -16,6 +16,7 @@
     <string name="duration_format_tv_show">%d eps</string>
     <string name="status">Status</string>
     <string name="duration">Duration</string>
+    <string name="add_bookmark">Add Bookmark</string>
 
     <string-array name="main_tab_title">
         <item>@string/movies</item>

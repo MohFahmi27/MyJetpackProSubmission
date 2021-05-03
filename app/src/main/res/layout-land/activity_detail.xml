@@ -45,7 +45,8 @@
                     android:textAlignment="viewStart"
                     android:textColor="@color/secondaryColor"
                     android:textSize="24sp"
-                    android:layout_marginHorizontal="@dimen/dimen_standard"
+                    android:layout_marginStart="@dimen/dimen_large"
+                    android:layout_marginEnd="@dimen/dimen_standard"
                     app:layout_constraintBottom_toBottomOf="@+id/img_poster_detail"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.1"
@@ -57,7 +58,6 @@
                 <TextView
                     android:id="@+id/tv_release_date"
                     style="@style/DefaultTextView"
-                    android:layout_marginHorizontal="@dimen/dimen_standard"
                     android:layout_marginTop="@dimen/dimen_standard"
                     android:layout_marginBottom="@dimen/dimen_standard"
                     android:textColor="@color/secondaryColor"
@@ -65,7 +65,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/tv_title_detail"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintStart_toStartOf="@+id/tv_title_detail"
                     app:layout_constraintTop_toBottomOf="@+id/tv_title_detail"
                     app:layout_constraintVertical_bias="0.0"
                     tools:text="11-02-2021" />
@@ -95,6 +95,19 @@
                     app:layout_constraintStart_toStartOf="@+id/imageView2"
                     app:layout_constraintTop_toTopOf="@+id/imageView2"
                     tools:text="8.5" />
+
+                <TextView
+                    android:id="@+id/tv_tag_line"
+                    style="@style/DefaultTextView"
+                    android:layout_width="0dp"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="@dimen/dimen_standard"
+                    android:layout_marginTop="@dimen/dimen_small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_release_date"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_release_date"
+                    tools:text="Animation | Adventure" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -136,42 +149,67 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_tag_line"
-                style="@style/DefaultTextView"
-                android:layout_width="0dp"
-                android:layout_marginHorizontal="@dimen/dimen_standard"
-                android:layout_marginTop="@dimen/dimen_large"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="16sp"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/dimen_standard" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Animation | Adventure" />
+                app:layout_constraintGuide_end="@dimen/dimen_standard" />
+
+            <TextView
+                android:id="@+id/tv_status_title"
+                style="@style/DefaultTextView"
+                android:layout_marginHorizontal="@dimen/dimen_standard"
+                android:text="@string/status"
+                android:textColor="@color/secondaryColor"
+                android:textSize="18sp"
+                android:layout_marginTop="@dimen/dimen_large"
+                app:layout_constraintEnd_toStartOf="@id/tv_duration_title"
+                app:layout_constraintStart_toEndOf="@id/guideline_start"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_status_detail"
                 style="@style/DefaultTextView"
-                android:layout_marginHorizontal="@dimen/dimen_standard"
-                android:layout_marginTop="@dimen/dimen_standard"
+                android:layout_marginTop="@dimen/dimen_small"
                 android:textColor="@color/primaryTextColor"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_tag_line"
-                tools:text="Status: Actived" />
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_status_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_status_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_status_title"
+                tools:text="Released" />
+
+            <TextView
+                android:id="@+id/tv_duration_title"
+                style="@style/DefaultTextView"
+                android:layout_marginHorizontal="@dimen/dimen_standard"
+                android:text="@string/duration"
+                android:textColor="@color/secondaryColor"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_status_title"
+                app:layout_constraintEnd_toStartOf="@id/guideline_end"
+                app:layout_constraintStart_toEndOf="@+id/tv_status_title"
+                app:layout_constraintTop_toTopOf="@+id/tv_status_title" />
 
             <TextView
                 android:id="@+id/tv_duration"
                 style="@style/DefaultTextView"
+                android:layout_marginHorizontal="@dimen/dimen_standard"
+                android:layout_marginTop="@dimen/dimen_small"
                 android:textColor="@color/primaryTextColor"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_status_detail"
-                app:layout_constraintEnd_toEndOf="@+id/tv_tag_line"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/tv_status_detail"
-                app:layout_constraintTop_toTopOf="@+id/tv_status_detail"
-                tools:text="Duration: 200" />
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_duration_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_duration_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_duration_title"
+                tools:text="200 mnt" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
