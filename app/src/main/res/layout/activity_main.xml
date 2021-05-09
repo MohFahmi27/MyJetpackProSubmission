@@ -26,14 +26,14 @@
                 <ImageView
                     android:id="@+id/img_poster_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="210dp"
                     android:contentDescription="@string/app_icon"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/movie_banner" />
+                    app:srcCompat="@drawable/image_banner" />
 
                 <TextView
                     android:id="@+id/tv_title_detail"
@@ -41,7 +41,7 @@
                     android:layout_marginStart="@dimen/dimen_standard"
                     android:text="@string/welcome"
                     android:textColor="@color/primaryTextColor"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@id/img_poster_detail"
                     app:layout_constraintEnd_toEndOf="@id/img_poster_detail"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -55,8 +55,7 @@
                     android:layout_marginEnd="@dimen/dimen_standard"
                     android:text="@string/app_description"
                     android:textColor="@color/primaryTextColor"
-                    android:textSize="15sp"
-
+                    android:textSize="13sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/tv_title_detail"

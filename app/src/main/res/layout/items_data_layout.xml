@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/img_poster"
-            android:layout_width="110dp"
-            android:layout_height="150dp"
+            android:layout_width="120dp"
+            android:layout_height="170dp"
             android:layout_margin="@dimen/dimen_standard"
             android:contentDescription="@string/poster"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +47,7 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="45dp"
+            android:layout_width="50dp"
             android:layout_height="40dp"
             app:layout_constraintBottom_toBottomOf="@+id/img_poster"
             app:layout_constraintEnd_toEndOf="@+id/img_poster"
@@ -75,7 +75,7 @@
             android:id="@+id/tv_release_date"
             style="@style/DefaultTextView"
             android:textColor="@color/secondaryColor"
-            android:textSize="14sp"
+            android:textSize="13sp"
             android:layout_marginTop="@dimen/dimen_super_small"
             app:layout_constraintEnd_toEndOf="@+id/tv_title"
             app:layout_constraintHorizontal_bias="0.0"
@@ -90,7 +90,7 @@
             android:layout_marginVertical="@dimen/dimen_small"
             android:layout_marginEnd="@dimen/dimen_standard"
             android:textColor="@color/secondaryColor"
-            android:textSize="14sp"
+            android:textSize="13sp"
             app:layout_constraintBottom_toTopOf="@+id/imageView2"
             app:layout_constraintEnd_toStartOf="@+id/imageView4"
             app:layout_constraintHorizontal_bias="0.0"

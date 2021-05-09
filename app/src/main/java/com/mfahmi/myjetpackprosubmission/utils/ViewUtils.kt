@@ -22,7 +22,7 @@ internal fun ImageView.setRoundedGlide(urlPath: String) {
 
 internal fun ImageView.setDetailGlide(urlPath: String) {
     Glide.with(this).load("https://image.tmdb.org/t/p/w500${urlPath}")
-            .apply(RequestOptions().transform(RoundedCorners(30)))
+            .apply(RequestOptions().transform(RoundedCorners(40)))
             .into(this)
 }
 
