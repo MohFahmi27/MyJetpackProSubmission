@@ -1,6 +1,7 @@
 package com.mfahmi.myjetpackprosubmission.ui.activities
 
 import android.os.Bundle
+import android.view.Menu
 import android.viewbinding.library.activity.viewBinding
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
@@ -14,6 +15,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setSupportActionBar(binding.toolbarMain)
+        title = ""
         initView()
     }
 
@@ -26,6 +29,11 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(
             binding.tabLayoutMain, binding.viewPagerMain
         ) { tab, position -> tab.text = tabTitle[position] }.attach()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
     }
 
 }

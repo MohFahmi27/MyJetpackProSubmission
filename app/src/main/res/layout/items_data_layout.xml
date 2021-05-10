@@ -6,9 +6,9 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/dimen_small"
     android:layout_marginVertical="@dimen/dimen_standard"
-    app:contentPadding="1dp"
-    app:cardBackgroundColor="@color/secondaryColor"
-    app:cardCornerRadius="15dp">
+    app:cardBackgroundColor="@color/primaryColor"
+    app:cardCornerRadius="@dimen/dimen_standard"
+    app:cardElevation="@dimen/dimen_super_small">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -74,9 +74,9 @@
         <TextView
             android:id="@+id/tv_release_date"
             style="@style/DefaultTextView"
+            android:layout_marginTop="@dimen/dimen_super_small"
             android:textColor="@color/secondaryColor"
             android:textSize="13sp"
-            android:layout_marginTop="@dimen/dimen_super_small"
             app:layout_constraintEnd_toEndOf="@+id/tv_title"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tv_title"
@@ -101,8 +101,8 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginHorizontal="@dimen/dimen_small"
             android:contentDescription="@string/arrow_right"
             app:layout_constraintBottom_toBottomOf="@+id/img_poster"

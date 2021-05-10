@@ -15,40 +15,46 @@ import com.mfahmi.myjetpackprosubmission.utils.setAnimationRecyclerView
 import com.mfahmi.myjetpackprosubmission.utils.setRoundedGlide
 
 class MoviesRecyclerviewAdapter(private val listItems: List<ResponseMovie>) :
-        RecyclerView.Adapter<MoviesRecyclerviewAdapter.MainRecyclerviewViewHolder>() {
+    RecyclerView.Adapter<MoviesRecyclerviewAdapter.MainRecyclerviewViewHolder>() {
 
     inner class MainRecyclerviewViewHolder(private val binding: ItemsDataLayoutBinding) :
-            RecyclerView.ViewHolder(binding.root) {
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(movies: ResponseMovie) {
             with(binding) {
                 imgPoster.setRoundedGlide(movies.posterPath)
                 tvTitle.text = movies.title
                 tvRating.text = movies.voteAverage.toString()
                 tvReleaseDate.text = movies.releaseDate
-                tvOverviewItems.text = itemView.context.getString(R.string.overview_format,
-                        movies.overview.substring(0, 25))
+                tvOverviewItems.text = itemView.context.getString(
+                    R.string.overview_format,
+                    movies.overview.substring(0, 25)
+                )
             }
             itemView.setOnClickListener(
-                CustomOnItemClickListener(adapterPosition, object : CustomOnItemClickListener.OnItemClickCallback {
-                    override fun onItemClicked(view: View, position: Int) {
-                        Intent(itemView.context, DetailActivity::class.java)
-                                .apply {
-                                    putExtra(DetailActivity.EXTRA_DETAIL_ID, movies.id)
-                                    putExtra(DetailActivity.EXTRA_TYPE, MoviesFragment::class.java.simpleName)
-                                    itemView.context.startActivity(this)
-                                }
-                    }
-                })
+                CustomOnItemClickListener(
+                    adapterPosition,
+                    object : CustomOnItemClickListener.OnItemClickCallback {
+                        override fun onItemClicked(view: View, position: Int) {
+                            Intent(itemView.context, DetailActivity::class.java).apply {
+                                putExtra(DetailActivity.EXTRA_DETAIL_ID, movies.id)
+                                putExtra(
+                                    DetailActivity.EXTRA_TYPE,
+                                    MoviesFragment::class.java.simpleName
+                                )
+                                itemView.context.startActivity(this)
+                            }
+                        }
+                    })
             )
         }
     }
 
     override fun onCreateViewHolder(
-            parent: ViewGroup,
-            viewType: Int
+        parent: ViewGroup,
+        viewType: Int
     ): MainRecyclerviewViewHolder {
         return MainRecyclerviewViewHolder(
-                ItemsDataLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemsDataLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 

@@ -45,13 +45,13 @@
                     android:backgroundTint="@color/primaryDarkColor"
                     android:contentDescription="@string/add_bookmark"
                     android:src="@drawable/ic_bookmark_outlined"
-                    app:tint="@color/secondaryColor"
                     app:borderWidth="3dp"
                     app:elevation="3dp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_poster_detail"
                     app:layout_constraintEnd_toEndOf="@+id/img_poster_detail"
                     app:layout_constraintStart_toStartOf="@+id/img_poster_detail"
-                    app:layout_constraintTop_toBottomOf="@+id/img_poster_detail" />
+                    app:layout_constraintTop_toBottomOf="@+id/img_poster_detail"
+                    app:tint="@color/secondaryColor" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -63,9 +63,9 @@
 
                 <ImageButton
                     android:id="@+id/btn_back_detail"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="@dimen/dimen_super_small"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="@dimen/dimen_small"
                     android:background="@drawable/rounded_background_transparent"
                     android:contentDescription="@string/app_icon"
                     android:src="@drawable/ic_left_arrow_secondary_color" />
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintGuide_end="@dimen/dimen_large" />
+                app:layout_constraintGuide_end="@dimen/dimen_standard" />
 
             <TextView
                 android:id="@+id/tv_title_detail"
@@ -175,7 +175,7 @@
                 android:id="@+id/tv_status_title"
                 style="@style/DefaultTextView"
                 android:layout_marginHorizontal="@dimen/dimen_standard"
-                android:layout_marginTop="@dimen/dimen_large"
+                android:layout_marginTop="@dimen/dimen_super_large"
                 android:text="@string/status"
                 android:textColor="@color/secondaryColor"
                 android:textSize="15sp"
@@ -188,7 +188,7 @@
                 style="@style/DefaultTextView"
                 android:layout_marginTop="@dimen/dimen_small"
                 android:textColor="@color/primaryTextColor"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@+id/tv_status_title"
                 app:layout_constraintStart_toStartOf="@+id/tv_status_title"
                 app:layout_constraintTop_toBottomOf="@+id/tv_status_title"
@@ -200,7 +200,7 @@
                 android:layout_marginHorizontal="@dimen/dimen_standard"
                 android:text="@string/duration"
                 android:textColor="@color/secondaryColor"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_status_title"
                 app:layout_constraintEnd_toStartOf="@id/guideline_end"
                 app:layout_constraintStart_toEndOf="@+id/tv_status_title"
@@ -212,7 +212,7 @@
                 android:layout_marginHorizontal="@dimen/dimen_standard"
                 android:layout_marginTop="@dimen/dimen_small"
                 android:textColor="@color/primaryTextColor"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@+id/tv_duration_title"
                 app:layout_constraintStart_toStartOf="@+id/tv_duration_title"
                 app:layout_constraintTop_toBottomOf="@+id/tv_duration_title"
@@ -222,7 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dimen_standard"
-                android:layout_marginVertical="@dimen/dimen_large"
+                android:layout_marginVertical="@dimen/dimen_super_large"
                 app:cardBackgroundColor="@color/secondaryColor"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"

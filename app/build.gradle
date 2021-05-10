@@ -5,7 +5,7 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.mfahmi.myjetpackprosubmission"
@@ -16,7 +16,7 @@ android {
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "API_KEY_TMDB", '"9cfb5fd629818c036aa2e0a15c0c1a58"'
+        buildConfigField "String", "API_KEY_TMDB", TMDB_API_KEY
     }
 
     buildTypes {
@@ -41,7 +41,7 @@ dependencies {
     //kotlin
     implementation "androidx.core:core-ktx:$coreKtxVersion"
     implementation "androidx.fragment:fragment-ktx:$coreKtxVersionFragment"
-    implementation "androidx.activity:activity-ktx: $coreKtxVersion"
+    implementation "androidx.activity:activity-ktx:$coreKtxVersionActivity"
     implementation "com.github.yogacp:android-viewbinding:$viewBindingLibVersion"
 
     //ui

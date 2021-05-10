@@ -15,39 +15,43 @@ import com.mfahmi.myjetpackprosubmission.utils.setAnimationRecyclerView
 import com.mfahmi.myjetpackprosubmission.utils.setRoundedGlide
 
 class TvShowRecyclerviewAdapter(private var listItems: List<ResponseTvShow>) :
-        RecyclerView.Adapter<TvShowRecyclerviewAdapter.TvShowViewHolder>() {
+    RecyclerView.Adapter<TvShowRecyclerviewAdapter.TvShowViewHolder>() {
 
     inner class TvShowViewHolder(private val binding: ItemsDataLayoutBinding) :
-            RecyclerView.ViewHolder(binding.root) {
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(tvShows: ResponseTvShow) {
             with(binding) {
                 imgPoster.setRoundedGlide(tvShows.posterPath)
                 tvTitle.text = tvShows.name
                 tvRating.text = tvShows.voteAverage.toString()
                 tvReleaseDate.text = tvShows.firstAirDate
-                tvOverviewItems.text = itemView.context.getString(R.string.overview_format,
-                        tvShows.overview.substring(0, 25))
+                tvOverviewItems.text = itemView.context.getString(
+                    R.string.overview_format,
+                    tvShows.overview.substring(0, 25)
+                )
             }
             itemView.setOnClickListener(
-                    CustomOnItemClickListener(
-                            adapterPosition,
-                            object : CustomOnItemClickListener.OnItemClickCallback {
-                                override fun onItemClicked(view: View, position: Int) {
-                                    Intent(itemView.context, DetailActivity::class.java)
-                                            .apply {
-                                                putExtra(DetailActivity.EXTRA_DETAIL_ID, tvShows.id)
-                                                putExtra(DetailActivity.EXTRA_TYPE, TvShowFragment::class.java.simpleName)
-                                                itemView.context.startActivity(this)
-                                            }
-                                }
-                            })
+                CustomOnItemClickListener(
+                    adapterPosition,
+                    object : CustomOnItemClickListener.OnItemClickCallback {
+                        override fun onItemClicked(view: View, position: Int) {
+                            Intent(itemView.context, DetailActivity::class.java).apply {
+                                putExtra(DetailActivity.EXTRA_DETAIL_ID, tvShows.id)
+                                putExtra(
+                                    DetailActivity.EXTRA_TYPE,
+                                    TvShowFragment::class.java.simpleName
+                                )
+                                itemView.context.startActivity(this)
+                            }
+                        }
+                    })
             )
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
         return TvShowViewHolder(
-                ItemsDataLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemsDataLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
