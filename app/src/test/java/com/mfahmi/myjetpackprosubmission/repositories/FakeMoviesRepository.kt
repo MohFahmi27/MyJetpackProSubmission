@@ -2,11 +2,11 @@ package com.mfahmi.myjetpackprosubmission.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.mfahmi.myjetpackprosubmission.models.movies.ResponseDetailMovie
-import com.mfahmi.myjetpackprosubmission.models.movies.ResponseMovie
 import com.mfahmi.myjetpackprosubmission.repositories.remote.GetDetailMovieCallback
 import com.mfahmi.myjetpackprosubmission.repositories.remote.GetMoviesCallback
 import com.mfahmi.myjetpackprosubmission.repositories.remote.RemoteRepositories
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseDetailMovie
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseMovie
 
 class FakeMoviesRepository(private val remoteRepositories: RemoteRepositories) {
 

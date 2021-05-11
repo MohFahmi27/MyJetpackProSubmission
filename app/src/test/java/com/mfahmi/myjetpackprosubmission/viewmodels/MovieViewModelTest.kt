@@ -4,8 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.mfahmi.myjetpackprosubmission.data.DataDummy
-import com.mfahmi.myjetpackprosubmission.models.movies.ResponseMovie
 import com.mfahmi.myjetpackprosubmission.repositories.MoviesRepository
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseMovie
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before

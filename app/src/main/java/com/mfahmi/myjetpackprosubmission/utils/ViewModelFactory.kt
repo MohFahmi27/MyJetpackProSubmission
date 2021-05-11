@@ -1,5 +1,6 @@
 package com.mfahmi.myjetpackprosubmission.utils
 
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mfahmi.myjetpackprosubmission.repositories.MoviesRepository
@@ -21,8 +22,8 @@ class ViewModelFactoryTvShows(private val tvShowRepository: TvShowRepository): V
 }
 
 @Suppress("UNCHECKED_CAST")
-class ViewModelFactoryDetail(private val moviesRepository: MoviesRepository,
+class ViewModelFactoryDetail(private val application: Application, private val moviesRepository: MoviesRepository,
                              private val tvShowRepository: TvShowRepository): ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-            DetailViewModel(moviesRepository, tvShowRepository) as T
+            DetailViewModel(application, moviesRepository, tvShowRepository) as T
 }

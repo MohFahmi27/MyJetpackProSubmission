@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.MainActivity">
+    tools:context=".ui.activities.BookmarkActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -30,14 +30,14 @@
                     android:layout_height="240dp"
                     android:contentDescription="@string/app_icon"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/img_banner_main"
+                    android:src="@drawable/img_banner_bookmark"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_title_detail"
+                    android:id="@+id/tv_title_bookmark"
                     style="@style/DefaultTextView"
                     android:layout_marginStart="@dimen/dimen_standard"
                     android:text="@string/welcome"
@@ -54,21 +54,29 @@
                     style="@style/DefaultTextView"
                     android:layout_width="0dp"
                     android:layout_marginEnd="@dimen/dimen_standard"
-                    android:text="@string/app_description"
+                    android:text="@string/favorite_description"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="13sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/tv_title_detail"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_title_detail" />
+                    app:layout_constraintStart_toStartOf="@+id/tv_title_bookmark"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_bookmark" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar_main"
+                android:id="@+id/toolbar_bookmark"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_scrollFlags="scroll">
+
+                <ImageButton
+                    android:id="@+id/btn_back_bookmark"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/app_icon"
+                    android:src="@drawable/ic_left_arrow_secondary_color" />
 
                 <ImageView
                     android:layout_width="30dp"
@@ -79,7 +87,7 @@
                 <TextView
                     style="@style/DefaultTextView"
                     android:layout_marginStart="@dimen/dimen_large"
-                    android:text="@string/app_name"
+                    android:text="@string/bookmark"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="17sp" />
 
@@ -88,7 +96,7 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout_main"
+            android:id="@+id/tab_layout_bookmark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/primaryDarkColor"
@@ -99,7 +107,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager_main"
+        android:id="@+id/view_pager_bookmark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />

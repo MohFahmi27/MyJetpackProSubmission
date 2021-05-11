@@ -1,9 +1,9 @@
 package com.mfahmi.myjetpackprosubmission.data
 
-import com.mfahmi.myjetpackprosubmission.models.movies.ResponseDetailMovie
-import com.mfahmi.myjetpackprosubmission.models.movies.ResponseMovie
-import com.mfahmi.myjetpackprosubmission.models.tvshow.ResponseDetailTvShow
-import com.mfahmi.myjetpackprosubmission.models.tvshow.ResponseTvShow
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseDetailMovie
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseMovie
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow.ResponseDetailTvShow
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow.ResponseTvShow
 
 object DataDummy {
     fun getPopularMovieDummy(): List<ResponseMovie> {

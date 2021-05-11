@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mfahmi.myjetpackprosubmission.R
 import com.mfahmi.myjetpackprosubmission.databinding.ItemsDataLayoutBinding
-import com.mfahmi.myjetpackprosubmission.models.movies.ResponseMovie
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseMovie
 import com.mfahmi.myjetpackprosubmission.ui.activities.DetailActivity
 import com.mfahmi.myjetpackprosubmission.ui.fragments.MoviesFragment
 import com.mfahmi.myjetpackprosubmission.utils.CustomOnItemClickListener
@@ -36,7 +36,7 @@ class MoviesRecyclerviewAdapter(private val listItems: List<ResponseMovie>) :
                     object : CustomOnItemClickListener.OnItemClickCallback {
                         override fun onItemClicked(view: View, position: Int) {
                             Intent(itemView.context, DetailActivity::class.java).apply {
-                                putExtra(DetailActivity.EXTRA_DETAIL_ID, movies.id)
+                                putExtra(DetailActivity.EXTRA_MOVIE, movies)
                                 putExtra(
                                     DetailActivity.EXTRA_TYPE,
                                     MoviesFragment::class.java.simpleName

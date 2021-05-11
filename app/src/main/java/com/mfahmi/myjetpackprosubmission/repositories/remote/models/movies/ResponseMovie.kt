@@ -1,7 +1,10 @@
-package com.mfahmi.myjetpackprosubmission.models.movies
+package com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class ResponseMovie(
 	@SerializedName("overview")
 	val overview: String,
@@ -20,4 +23,4 @@ data class ResponseMovie(
 
 	@SerializedName("id")
 	val id: Int,
-)
+): Parcelable

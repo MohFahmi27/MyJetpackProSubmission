@@ -1,4 +1,4 @@
-package com.mfahmi.myjetpackprosubmission.models.tvshow
+package com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow
 
 import com.google.gson.annotations.SerializedName
 

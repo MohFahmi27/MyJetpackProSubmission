@@ -1,15 +1,19 @@
 package com.mfahmi.myjetpackprosubmission.viewmodels
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.mfahmi.myjetpackprosubmission.models.movies.ResponseDetailMovie
-import com.mfahmi.myjetpackprosubmission.models.tvshow.ResponseDetailTvShow
 import com.mfahmi.myjetpackprosubmission.repositories.MoviesRepository
 import com.mfahmi.myjetpackprosubmission.repositories.TvShowRepository
+import com.mfahmi.myjetpackprosubmission.repositories.local.LocalDataSource
+import com.mfahmi.myjetpackprosubmission.repositories.local.entities.MovieEntity
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseDetailMovie
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow.ResponseDetailTvShow
 
 class DetailViewModel(
-        private val moviesRepository: MoviesRepository,
-        private val tvShowRepository: TvShowRepository,
+    application: Application,
+    private val moviesRepository: MoviesRepository,
+    private val tvShowRepository: TvShowRepository,
 ) : ViewModel() {
     var id: Int = 0
 
@@ -19,6 +23,11 @@ class DetailViewModel(
 
     fun getTvShowDetail(): LiveData<ResponseDetailTvShow> {
         return tvShowRepository.getTvShowDetailData(id)
+    }
+
+    private val localDataSource = LocalDataSource(application)
+    fun insertBookmark(movieEntity: MovieEntity) {
+        localDataSource.insertMovieBookmark(movieEntity)
     }
 
 }

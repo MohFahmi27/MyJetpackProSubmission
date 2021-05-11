@@ -1,7 +1,9 @@
 package com.mfahmi.myjetpackprosubmission.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.viewbinding.library.activity.viewBinding
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
@@ -34,6 +36,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_bookmark -> {
+                startActivity(Intent(this, BookmarkActivity::class.java))
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

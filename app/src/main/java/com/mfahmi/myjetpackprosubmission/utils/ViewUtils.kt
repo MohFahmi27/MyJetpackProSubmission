@@ -16,7 +16,7 @@ internal fun View.setAnimationRecyclerView() {
 
 internal fun ImageView.setRoundedGlide(urlPath: String) {
     Glide.with(context).load("https://image.tmdb.org/t/p/w500/$urlPath")
-            .apply(RequestOptions().override(140, 180).transform(RoundedCorners(8)))
+            .apply(RequestOptions().override(140, 180).transform(RoundedCorners(15)))
             .into(this)
 }
 

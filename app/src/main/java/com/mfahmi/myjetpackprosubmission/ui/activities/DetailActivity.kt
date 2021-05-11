@@ -8,6 +8,8 @@ import com.mfahmi.myjetpackprosubmission.R
 import com.mfahmi.myjetpackprosubmission.databinding.ActivityDetailBinding
 import com.mfahmi.myjetpackprosubmission.di.Injection.movieInjectRepository
 import com.mfahmi.myjetpackprosubmission.di.Injection.tvShowInjectRepository
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseMovie
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow.ResponseTvShow
 import com.mfahmi.myjetpackprosubmission.ui.fragments.MoviesFragment
 import com.mfahmi.myjetpackprosubmission.utils.ViewModelFactoryDetail
 import com.mfahmi.myjetpackprosubmission.utils.setDetailGlide
@@ -18,12 +20,13 @@ class DetailActivity : AppCompatActivity() {
 
     private val binding: ActivityDetailBinding by viewBinding()
     private val viewModel: DetailViewModel by viewModels {
-        ViewModelFactoryDetail(movieInjectRepository(), tvShowInjectRepository())
+        ViewModelFactoryDetail(application, movieInjectRepository(), tvShowInjectRepository())
     }
 
     companion object {
-        const val EXTRA_DETAIL_ID = "extra_detail_id"
         const val EXTRA_TYPE = "extra_type"
+        const val EXTRA_MOVIE = "extra_movie"
+        const val EXTRA_TV_SHOW = "extra_tv_show"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,11 +34,14 @@ class DetailActivity : AppCompatActivity() {
         binding.btnBackDetail.setOnClickListener { finish() }
 
         binding.pgDetail.setVisibility(true)
-        viewModel.id = intent?.getIntExtra(EXTRA_DETAIL_ID, 0) as Int
         intent?.getStringExtra(EXTRA_TYPE).run {
             if (this.equals(MoviesFragment::class.java.simpleName)) {
+                val movie = intent?.getParcelableExtra<ResponseMovie>(EXTRA_MOVIE) as ResponseMovie
+                viewModel.id = movie.id
                 populateMovieView()
             } else {
+                val tvShow = intent?.getParcelableExtra<ResponseTvShow>(EXTRA_TV_SHOW) as ResponseTvShow
+                viewModel.id = tvShow.id
                 populateTvShowView()
             }
         }
@@ -67,7 +73,8 @@ class DetailActivity : AppCompatActivity() {
                 tvReleaseDate.text = it.firstAirDate
                 tvTagLine.text = it.tagline
                 tvStatusDetail.text = it.status
-                tvDuration.text = resources.getString(R.string.duration_format_tv_show, it.numberOfEpisodes)
+                tvDuration.text =
+                    resources.getString(R.string.duration_format_tv_show, it.numberOfEpisodes)
                 tvOverview.text = it.overview
                 pgDetail.setVisibility(false)
             }

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mfahmi.myjetpackprosubmission.R
 import com.mfahmi.myjetpackprosubmission.databinding.ItemsDataLayoutBinding
-import com.mfahmi.myjetpackprosubmission.models.tvshow.ResponseTvShow
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow.ResponseTvShow
 import com.mfahmi.myjetpackprosubmission.ui.activities.DetailActivity
 import com.mfahmi.myjetpackprosubmission.ui.fragments.TvShowFragment
 import com.mfahmi.myjetpackprosubmission.utils.CustomOnItemClickListener
@@ -36,11 +36,8 @@ class TvShowRecyclerviewAdapter(private var listItems: List<ResponseTvShow>) :
                     object : CustomOnItemClickListener.OnItemClickCallback {
                         override fun onItemClicked(view: View, position: Int) {
                             Intent(itemView.context, DetailActivity::class.java).apply {
-                                putExtra(DetailActivity.EXTRA_DETAIL_ID, tvShows.id)
-                                putExtra(
-                                    DetailActivity.EXTRA_TYPE,
-                                    TvShowFragment::class.java.simpleName
-                                )
+                                putExtra(DetailActivity.EXTRA_TV_SHOW, tvShows)
+                                putExtra(DetailActivity.EXTRA_TYPE, TvShowFragment::class.java.simpleName)
                                 itemView.context.startActivity(this)
                             }
                         }

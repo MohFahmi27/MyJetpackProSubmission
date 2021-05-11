@@ -18,6 +18,7 @@
     <string name="duration">Duration</string>
     <string name="add_bookmark">Add Bookmark</string>
     <string name="bookmark">Bookmark</string>
+    <string name="favorite_description">Anything that you loved will be placed in here.</string>
 
     <string-array name="main_tab_title">
         <item>@string/movies</item>

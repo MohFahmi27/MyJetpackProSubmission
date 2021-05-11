@@ -1,9 +1,9 @@
 package com.mfahmi.myjetpackprosubmission.api
 
-import com.mfahmi.myjetpackprosubmission.models.movies.ResponseDetailMovie
-import com.mfahmi.myjetpackprosubmission.models.movies.ResponseItemMovies
-import com.mfahmi.myjetpackprosubmission.models.tvshow.ResponseDetailTvShow
-import com.mfahmi.myjetpackprosubmission.models.tvshow.ResponseItemTvShows
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseDetailMovie
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseItemMovies
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow.ResponseDetailTvShow
+import com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow.ResponseItemTvShows
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
