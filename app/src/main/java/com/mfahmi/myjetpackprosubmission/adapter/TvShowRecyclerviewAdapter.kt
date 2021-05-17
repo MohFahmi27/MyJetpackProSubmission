@@ -4,22 +4,40 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mfahmi.myjetpackprosubmission.R
 import com.mfahmi.myjetpackprosubmission.databinding.ItemsDataLayoutBinding
-import com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow.ResponseTvShow
+import com.mfahmi.myjetpackprosubmission.repositories.local.entities.TvShowEntity
 import com.mfahmi.myjetpackprosubmission.ui.activities.DetailActivity
 import com.mfahmi.myjetpackprosubmission.ui.fragments.TvShowFragment
 import com.mfahmi.myjetpackprosubmission.utils.CustomOnItemClickListener
 import com.mfahmi.myjetpackprosubmission.utils.setAnimationRecyclerView
 import com.mfahmi.myjetpackprosubmission.utils.setRoundedGlide
 
-class TvShowRecyclerviewAdapter(private var listItems: List<ResponseTvShow>) :
-    RecyclerView.Adapter<TvShowRecyclerviewAdapter.TvShowViewHolder>() {
+class TvShowRecyclerviewAdapter :
+    PagedListAdapter<TvShowEntity, TvShowRecyclerviewAdapter.TvShowViewHolder>
+        (DIFF_CALLBACK) {
+
+    companion object {
+        private val DIFF_CALLBACK by lazy {
+            object : DiffUtil.ItemCallback<TvShowEntity>() {
+                override fun areItemsTheSame(oldItem: TvShowEntity, newItem: TvShowEntity): Boolean {
+                    return oldItem.tvShowId == newItem.tvShowId
+                }
+
+                override fun areContentsTheSame(oldItem: TvShowEntity, newItem: TvShowEntity): Boolean {
+                    return oldItem.tvShowId == newItem.tvShowId
+                }
+
+            }
+        }
+    }
 
     inner class TvShowViewHolder(private val binding: ItemsDataLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(tvShows: ResponseTvShow) {
+        fun bind(tvShows: TvShowEntity) {
             with(binding) {
                 imgPoster.setRoundedGlide(tvShows.posterPath)
                 tvTitle.text = tvShows.name
@@ -37,7 +55,10 @@ class TvShowRecyclerviewAdapter(private var listItems: List<ResponseTvShow>) :
                         override fun onItemClicked(view: View, position: Int) {
                             Intent(itemView.context, DetailActivity::class.java).apply {
                                 putExtra(DetailActivity.EXTRA_TV_SHOW, tvShows)
-                                putExtra(DetailActivity.EXTRA_TYPE, TvShowFragment::class.java.simpleName)
+                                putExtra(
+                                    DetailActivity.EXTRA_TYPE,
+                                    TvShowFragment::class.java.simpleName
+                                )
                                 itemView.context.startActivity(this)
                             }
                         }
@@ -53,9 +74,7 @@ class TvShowRecyclerviewAdapter(private var listItems: List<ResponseTvShow>) :
     }
 
     override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
-        holder.bind(listItems[position])
+        holder.bind(getItem(position) as TvShowEntity)
         holder.itemView.setAnimationRecyclerView()
     }
-
-    override fun getItemCount(): Int = listItems.size
 }

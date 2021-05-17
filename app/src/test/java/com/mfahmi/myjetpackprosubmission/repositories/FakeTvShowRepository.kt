@@ -4,15 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mfahmi.myjetpackprosubmission.repositories.remote.GetDetailTvShowCallback
 import com.mfahmi.myjetpackprosubmission.repositories.remote.GetTvShowsCallback
-import com.mfahmi.myjetpackprosubmission.repositories.remote.RemoteRepositories
+import com.mfahmi.myjetpackprosubmission.repositories.remote.RemoteDataSource
 import com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow.ResponseDetailTvShow
 import com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow.ResponseTvShow
 
-class FakeTvShowRepository(private val remoteRepositories: RemoteRepositories) {
+class FakeTvShowRepository(private val remoteDataSource: RemoteDataSource) {
 
     fun getTvShowsData(): LiveData<List<ResponseTvShow>> {
         val tvShowsData = MutableLiveData<List<ResponseTvShow>>()
-        remoteRepositories.getPopularTvShows(object : GetTvShowsCallback {
+        remoteDataSource.getPopularTvShows(object : GetTvShowsCallback {
             override fun onResponse(responseTvShows: List<ResponseTvShow>) {
                 tvShowsData.postValue(responseTvShows)
             }
@@ -22,7 +22,7 @@ class FakeTvShowRepository(private val remoteRepositories: RemoteRepositories) {
 
     fun getTvShowDetailData(tvShowId: Int): LiveData<ResponseDetailTvShow> {
         val tvShowDetailData = MutableLiveData<ResponseDetailTvShow>()
-        remoteRepositories.getDetailTvShow(tvShowId, object : GetDetailTvShowCallback {
+        remoteDataSource.getDetailTvShow(tvShowId, object : GetDetailTvShowCallback {
             override fun onResponse(responseDetailTvShow: ResponseDetailTvShow) {
                 tvShowDetailData.postValue(responseDetailTvShow)
             }

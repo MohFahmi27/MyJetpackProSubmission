@@ -14,7 +14,7 @@ abstract class BookmarkRoomDatabase : RoomDatabase() {
 
     companion object : SingletonHolder<BookmarkRoomDatabase, Context>({
         Room.databaseBuilder(
-            it.applicationContext, BookmarkRoomDatabase::class.java, "bookmark_catalogue.db"
+            it.applicationContext, BookmarkRoomDatabase::class.java, "bookmark_submission.db"
         ).build()
     })
 }

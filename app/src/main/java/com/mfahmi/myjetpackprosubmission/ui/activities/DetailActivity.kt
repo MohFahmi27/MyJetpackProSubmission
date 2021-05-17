@@ -8,8 +8,8 @@ import com.mfahmi.myjetpackprosubmission.R
 import com.mfahmi.myjetpackprosubmission.databinding.ActivityDetailBinding
 import com.mfahmi.myjetpackprosubmission.di.Injection.movieInjectRepository
 import com.mfahmi.myjetpackprosubmission.di.Injection.tvShowInjectRepository
-import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseMovie
-import com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow.ResponseTvShow
+import com.mfahmi.myjetpackprosubmission.repositories.local.entities.MovieEntity
+import com.mfahmi.myjetpackprosubmission.repositories.local.entities.TvShowEntity
 import com.mfahmi.myjetpackprosubmission.ui.fragments.MoviesFragment
 import com.mfahmi.myjetpackprosubmission.utils.ViewModelFactoryDetail
 import com.mfahmi.myjetpackprosubmission.utils.setDetailGlide
@@ -20,7 +20,11 @@ class DetailActivity : AppCompatActivity() {
 
     private val binding: ActivityDetailBinding by viewBinding()
     private val viewModel: DetailViewModel by viewModels {
-        ViewModelFactoryDetail(application, movieInjectRepository(), tvShowInjectRepository())
+        ViewModelFactoryDetail(
+            application,
+            movieInjectRepository(applicationContext),
+            tvShowInjectRepository(applicationContext)
+        )
     }
 
     companion object {
@@ -36,48 +40,41 @@ class DetailActivity : AppCompatActivity() {
         binding.pgDetail.setVisibility(true)
         intent?.getStringExtra(EXTRA_TYPE).run {
             if (this.equals(MoviesFragment::class.java.simpleName)) {
-                val movie = intent?.getParcelableExtra<ResponseMovie>(EXTRA_MOVIE) as ResponseMovie
-                viewModel.id = movie.id
-                populateMovieView()
+                val movie = intent?.getParcelableExtra<MovieEntity>(EXTRA_MOVIE) as MovieEntity
+                viewModel.id = movie.movieId
+                populateMovieView(movie)
             } else {
-                val tvShow = intent?.getParcelableExtra<ResponseTvShow>(EXTRA_TV_SHOW) as ResponseTvShow
-                viewModel.id = tvShow.id
-                populateTvShowView()
+                val tvShow = intent?.getParcelableExtra<TvShowEntity>(EXTRA_TV_SHOW) as TvShowEntity
+                viewModel.id = tvShow.tvShowId
+                populateTvShowView(tvShow)
             }
         }
 
     }
 
-    private fun populateMovieView() {
-        viewModel.getMovieDetail().observe(this) {
-            with(binding) {
-                imgPosterDetail.setDetailGlide(it.posterPath)
-                tvTitleDetail.text = it.title
-                tvRatingDetail.text = resources.getString(R.string.rating_format, it.voteAverage)
-                tvReleaseDate.text = it.releaseDate
-                tvTagLine.text = it.tagline
-                tvStatusDetail.text = it.status
-                tvDuration.text = resources.getString(R.string.duration_format_movie, it.runtime)
-                tvOverview.text = it.overview
-                pgDetail.setVisibility(false)
-            }
+    private fun populateMovieView(movie: MovieEntity) {
+        with(binding) {
+            imgPosterDetail.setDetailGlide(movie.posterPath)
+            tvTitleDetail.text = movie.title
+            tvRatingDetail.text = resources.getString(R.string.rating_format, movie.voteAverage)
+            tvReleaseDate.text = movie.releaseDate
+            tvOriginalLangDetail.text = movie.originalLanguage
+            tvVoteCountDetail.text = movie.voteCount.toString()
+            tvOverview.text = movie.overview
+            pgDetail.setVisibility(false)
         }
     }
 
-    private fun populateTvShowView() {
-        viewModel.getTvShowDetail().observe(this) {
-            with(binding) {
-                imgPosterDetail.setDetailGlide(it.posterPath)
-                tvTitleDetail.text = it.name
-                tvRatingDetail.text = resources.getString(R.string.rating_format, it.voteAverage)
-                tvReleaseDate.text = it.firstAirDate
-                tvTagLine.text = it.tagline
-                tvStatusDetail.text = it.status
-                tvDuration.text =
-                    resources.getString(R.string.duration_format_tv_show, it.numberOfEpisodes)
-                tvOverview.text = it.overview
-                pgDetail.setVisibility(false)
-            }
+    private fun populateTvShowView(tvShow: TvShowEntity) {
+        with(binding) {
+            imgPosterDetail.setDetailGlide(tvShow.posterPath)
+            tvTitleDetail.text = tvShow.name
+            tvRatingDetail.text = resources.getString(R.string.rating_format, tvShow.voteAverage)
+            tvVoteCountDetail.text = tvShow.voteCount.toString()
+            tvReleaseDate.text = tvShow.firstAirDate
+            tvOriginalLangDetail.text = tvShow.originalLanguage
+            tvOverview.text = tvShow.overview
+            pgDetail.setVisibility(false)
         }
     }
 }

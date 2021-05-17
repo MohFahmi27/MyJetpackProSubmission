@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.mfahmi.myjetpackprosubmission.data.DataDummy
 import com.mfahmi.myjetpackprosubmission.repositories.remote.GetDetailMovieCallback
 import com.mfahmi.myjetpackprosubmission.repositories.remote.GetMoviesCallback
-import com.mfahmi.myjetpackprosubmission.repositories.remote.RemoteRepositories
+import com.mfahmi.myjetpackprosubmission.repositories.remote.RemoteDataSource
 import com.mfahmi.myjetpackprosubmission.utils.LiveDataTestUtil
 import com.mfahmi.myjetpackprosubmission.utils.TestHelper.anyOfT
 import com.mfahmi.myjetpackprosubmission.utils.TestHelper.eqOfT
@@ -20,7 +20,7 @@ class MoviesRepositoryTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val remoteRepositories = Mockito.mock(RemoteRepositories::class.java)
+    private val remoteRepositories = Mockito.mock(RemoteDataSource::class.java)
     private val movieRepository = FakeMoviesRepository(remoteRepositories)
 
     private val movieData = DataDummy.getPopularMovieDummy()

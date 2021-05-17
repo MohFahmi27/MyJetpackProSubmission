@@ -51,7 +51,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/img_poster_detail"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.1"
-                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintStart_toEndOf="@+id/img_poster_detail"
                     app:layout_constraintTop_toTopOf="@+id/img_poster_detail"
                     app:layout_constraintVertical_bias="0.25"
                     tools:text="Alita Battle Angel" />
@@ -71,34 +71,8 @@
                     app:layout_constraintVertical_bias="0.0"
                     tools:text="11-02-2021" />
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="70dp"
-                    android:layout_height="60dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/img_poster_detail"
-                    app:layout_constraintEnd_toEndOf="@+id/img_poster_detail"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/img_poster_detail"
-                    app:layout_constraintTop_toTopOf="@+id/img_poster_detail"
-                    app:layout_constraintVertical_bias="0.93"
-                    app:srcCompat="@drawable/rounded_corner_background"
-                    tools:ignore="ContentDescription" />
-
                 <TextView
-                    android:id="@+id/tv_rating_detail"
-                    style="@style/DefaultTextView"
-                    android:layout_margin="@dimen/dimen_standard"
-                    android:textAlignment="center"
-                    android:textColor="@color/secondaryTextColor"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView2"
-                    app:layout_constraintStart_toStartOf="@+id/imageView2"
-                    app:layout_constraintTop_toTopOf="@+id/imageView2"
-                    tools:text="8.2/10" />
-
-                <TextView
-                    android:id="@+id/tv_tag_line"
+                    android:id="@+id/tv_original_lang_detail"
                     style="@style/DefaultTextView"
                     android:layout_width="0dp"
                     android:layout_marginTop="@dimen/dimen_small"
@@ -179,51 +153,51 @@
                 app:layout_constraintGuide_end="@dimen/dimen_standard" />
 
             <TextView
-                android:id="@+id/tv_status_title"
+                android:id="@+id/tv_vote_average_title"
                 style="@style/DefaultTextView"
                 android:layout_marginHorizontal="@dimen/dimen_standard"
-                android:layout_marginTop="@dimen/dimen_large"
-                android:text="@string/status"
+                android:layout_marginTop="@dimen/dimen_super_large"
+                android:text="@string/vote_average"
                 android:textColor="@color/secondaryColor"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@id/tv_duration_title"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/tv_vote_count_title"
                 app:layout_constraintStart_toEndOf="@id/guideline_start"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_status_detail"
+                android:id="@+id/tv_rating_detail"
                 style="@style/DefaultTextView"
                 android:layout_marginTop="@dimen/dimen_small"
                 android:textColor="@color/primaryTextColor"
-                android:textSize="22sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_status_title"
-                app:layout_constraintStart_toStartOf="@+id/tv_status_title"
-                app:layout_constraintTop_toBottomOf="@+id/tv_status_title"
-                tools:text="Released" />
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_vote_average_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_vote_average_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_vote_average_title"
+                tools:text="8.5/10" />
 
             <TextView
-                android:id="@+id/tv_duration_title"
+                android:id="@+id/tv_vote_count_title"
                 style="@style/DefaultTextView"
                 android:layout_marginHorizontal="@dimen/dimen_standard"
-                android:text="@string/duration"
+                android:text="@string/vote_count"
                 android:textColor="@color/secondaryColor"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_status_title"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_vote_average_title"
                 app:layout_constraintEnd_toStartOf="@id/guideline_end"
-                app:layout_constraintStart_toEndOf="@+id/tv_status_title"
-                app:layout_constraintTop_toTopOf="@+id/tv_status_title" />
+                app:layout_constraintStart_toEndOf="@+id/tv_vote_average_title"
+                app:layout_constraintTop_toTopOf="@+id/tv_vote_average_title" />
 
             <TextView
-                android:id="@+id/tv_duration"
+                android:id="@+id/tv_vote_count_detail"
                 style="@style/DefaultTextView"
                 android:layout_marginHorizontal="@dimen/dimen_standard"
                 android:layout_marginTop="@dimen/dimen_small"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_duration_title"
-                app:layout_constraintStart_toStartOf="@+id/tv_duration_title"
-                app:layout_constraintTop_toBottomOf="@+id/tv_duration_title"
-                tools:text="200 mnt" />
+                app:layout_constraintEnd_toEndOf="@+id/tv_vote_count_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_vote_count_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_vote_count_title"
+                tools:text="563" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -233,7 +207,7 @@
                 app:cardBackgroundColor="@color/secondaryColor"
                 app:cardCornerRadius="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_duration">
+                app:layout_constraintTop_toBottomOf="@+id/tv_rating_detail">
 
                 <LinearLayout
                     android:layout_width="match_parent"

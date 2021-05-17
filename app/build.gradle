@@ -42,6 +42,7 @@ android {
 dependencies {
     //kotlin
     implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.fragment:fragment-ktx:$coreKtxVersionFragment"
     implementation "androidx.activity:activity-ktx:$coreKtxVersionActivity"
     implementation "com.github.yogacp:android-viewbinding:$viewBindingLibVersion"
@@ -62,8 +63,10 @@ dependencies {
 
     // database
     implementation "androidx.room:room-runtime:$roomVersion"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     kapt "androidx.room:room-compiler:$roomVersion"
+
+    // paging
+    implementation "androidx.paging:paging-runtime:$pagingVersion"
 
     //testing
     testImplementation "junit:junit:$junitVersion"

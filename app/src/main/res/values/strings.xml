@@ -19,6 +19,9 @@
     <string name="add_bookmark">Add Bookmark</string>
     <string name="bookmark">Bookmark</string>
     <string name="favorite_description">Anything that you loved will be placed in here.</string>
+    <string name="something_when_wrong">Something When Wrong dude…</string>
+    <string name="vote_average">Vote Average</string>
+    <string name="vote_count">Vote Count</string>
 
     <string-array name="main_tab_title">
         <item>@string/movies</item>

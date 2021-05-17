@@ -39,6 +39,8 @@ ext {
 
     roomVersion = '2.3.0'
 
+    pagingVersion = "2.1.1"
+
     junitVersion = '4.13.2'
     junitExtversion = '1.1.2'
     espressoVersion = '3.3.0'

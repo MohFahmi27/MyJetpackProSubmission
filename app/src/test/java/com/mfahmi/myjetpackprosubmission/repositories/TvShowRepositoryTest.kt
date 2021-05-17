@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.mfahmi.myjetpackprosubmission.data.DataDummy
 import com.mfahmi.myjetpackprosubmission.repositories.remote.GetDetailTvShowCallback
 import com.mfahmi.myjetpackprosubmission.repositories.remote.GetTvShowsCallback
-import com.mfahmi.myjetpackprosubmission.repositories.remote.RemoteRepositories
+import com.mfahmi.myjetpackprosubmission.repositories.remote.RemoteDataSource
 import com.mfahmi.myjetpackprosubmission.utils.LiveDataTestUtil
 import com.mfahmi.myjetpackprosubmission.utils.TestHelper.anyOfT
 import com.mfahmi.myjetpackprosubmission.utils.TestHelper.eqOfT
@@ -20,7 +20,7 @@ class TvShowRepositoryTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val remoteRepositories = Mockito.mock(RemoteRepositories::class.java)
+    private val remoteRepositories = Mockito.mock(RemoteDataSource::class.java)
     private val tvShowRepository = FakeTvShowRepository(remoteRepositories)
 
     private val tvShowData = DataDummy.getPopularTvShowDummy()

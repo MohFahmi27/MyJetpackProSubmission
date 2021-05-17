@@ -4,22 +4,41 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mfahmi.myjetpackprosubmission.R
 import com.mfahmi.myjetpackprosubmission.databinding.ItemsDataLayoutBinding
-import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseMovie
+import com.mfahmi.myjetpackprosubmission.repositories.local.entities.MovieEntity
 import com.mfahmi.myjetpackprosubmission.ui.activities.DetailActivity
 import com.mfahmi.myjetpackprosubmission.ui.fragments.MoviesFragment
 import com.mfahmi.myjetpackprosubmission.utils.CustomOnItemClickListener
 import com.mfahmi.myjetpackprosubmission.utils.setAnimationRecyclerView
 import com.mfahmi.myjetpackprosubmission.utils.setRoundedGlide
 
-class MoviesRecyclerviewAdapter(private val listItems: List<ResponseMovie>) :
-    RecyclerView.Adapter<MoviesRecyclerviewAdapter.MainRecyclerviewViewHolder>() {
+class MoviesRecyclerviewAdapter :
+    PagedListAdapter<MovieEntity, MoviesRecyclerviewAdapter.MainRecyclerviewViewHolder>(
+        DIFF_CALLBACK
+    ) {
+
+    companion object {
+        private val DIFF_CALLBACK by lazy {
+            object : DiffUtil.ItemCallback<MovieEntity>() {
+                override fun areItemsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean {
+                    return oldItem.movieId == newItem.movieId
+                }
+
+                override fun areContentsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean {
+                    return oldItem.movieId == newItem.movieId
+                }
+
+            }
+        }
+    }
 
     inner class MainRecyclerviewViewHolder(private val binding: ItemsDataLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(movies: ResponseMovie) {
+        fun bind(movies: MovieEntity) {
             with(binding) {
                 imgPoster.setRoundedGlide(movies.posterPath)
                 tvTitle.text = movies.title
@@ -32,8 +51,7 @@ class MoviesRecyclerviewAdapter(private val listItems: List<ResponseMovie>) :
             }
             itemView.setOnClickListener(
                 CustomOnItemClickListener(
-                    adapterPosition,
-                    object : CustomOnItemClickListener.OnItemClickCallback {
+                    adapterPosition, object : CustomOnItemClickListener.OnItemClickCallback {
                         override fun onItemClicked(view: View, position: Int) {
                             Intent(itemView.context, DetailActivity::class.java).apply {
                                 putExtra(DetailActivity.EXTRA_MOVIE, movies)
@@ -49,19 +67,18 @@ class MoviesRecyclerviewAdapter(private val listItems: List<ResponseMovie>) :
         }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): MainRecyclerviewViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainRecyclerviewViewHolder {
         return MainRecyclerviewViewHolder(
-            ItemsDataLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemsDataLayoutBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         )
     }
 
     override fun onBindViewHolder(holder: MainRecyclerviewViewHolder, position: Int) {
-        holder.bind(listItems[position])
+        holder.bind(getItem(position) as MovieEntity)
         holder.itemView.setAnimationRecyclerView()
     }
-
-    override fun getItemCount(): Int = listItems.size
 }

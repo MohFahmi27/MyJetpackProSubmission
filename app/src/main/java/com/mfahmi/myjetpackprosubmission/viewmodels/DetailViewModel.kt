@@ -5,29 +5,27 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.mfahmi.myjetpackprosubmission.repositories.MoviesRepository
 import com.mfahmi.myjetpackprosubmission.repositories.TvShowRepository
-import com.mfahmi.myjetpackprosubmission.repositories.local.LocalDataSource
 import com.mfahmi.myjetpackprosubmission.repositories.local.entities.MovieEntity
-import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseDetailMovie
-import com.mfahmi.myjetpackprosubmission.repositories.remote.models.tvshow.ResponseDetailTvShow
+import com.mfahmi.myjetpackprosubmission.repositories.local.entities.TvShowEntity
 
 class DetailViewModel(
     application: Application,
     private val moviesRepository: MoviesRepository,
-    private val tvShowRepository: TvShowRepository,
+    private val tvShowRepository: TvShowRepository
 ) : ViewModel() {
     var id: Int = 0
 
-    fun getMovieDetail(): LiveData<ResponseDetailMovie> {
-        return moviesRepository.getDetailMoviesData(id)
+    fun checkBookmarkMovie(movieId: Int): LiveData<Boolean> = moviesRepository.checkBookmarkMovie(movieId)
+
+    fun setBookmarkMovie(movieEntity: MovieEntity, status: Boolean) {
+        moviesRepository.setBookmarkMovie(movieEntity, status)
     }
 
-    fun getTvShowDetail(): LiveData<ResponseDetailTvShow> {
-        return tvShowRepository.getTvShowDetailData(id)
-    }
+    fun checkBookmarkTvShow(tvShowId: Int): LiveData<Boolean> =
+        tvShowRepository.checkBookmarkTvShow(tvShowId)
 
-    private val localDataSource = LocalDataSource(application)
-    fun insertBookmark(movieEntity: MovieEntity) {
-        localDataSource.insertMovieBookmark(movieEntity)
+    fun setBookmarkTvShow(tvShowEntity: TvShowEntity, status: Boolean) {
+        tvShowRepository.setBookmarkTvShow(tvShowEntity, status)
     }
 
 }
