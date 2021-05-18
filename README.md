@@ -10,4 +10,7 @@ This is submission for android Jetpack pro in dicoding.com, please use this repo
 
 ## Submission Screenshot:
 <p align="center">
+  <img src="https://github.com/MohFahmi27/MyJetpackProSubmission/blob/master/assets/Screenshot_20210518-201544_Movies%20App.jpg" width="250"/>
+  <img src="https://github.com/MohFahmi27/MyJetpackProSubmission/blob/master/assets/Screenshot_20210518-201612_Movies%20App.jpg" width="250"/>
+  <img src="https://github.com/MohFahmi27/MyJetpackProSubmission/blob/master/assets/Screenshot_20210518-201626_Movies%20App.jpg" width="250"/>
 </p>
