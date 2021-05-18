@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mfahmi.myjetpackprosubmission.R
-import com.mfahmi.myjetpackprosubmission.adapter.MainPagerAdapter
 import com.mfahmi.myjetpackprosubmission.databinding.ActivityMainBinding
+import com.mfahmi.myjetpackprosubmission.ui.adapter.MainPagerAdapter
 
 class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by viewBinding()

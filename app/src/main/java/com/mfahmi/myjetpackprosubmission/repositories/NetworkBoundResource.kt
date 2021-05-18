@@ -2,8 +2,8 @@ package com.mfahmi.myjetpackprosubmission.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.mfahmi.myjetpackprosubmission.repositories.remote.ApiResponse
-import com.mfahmi.myjetpackprosubmission.repositories.remote.StatusApi.*
+import com.mfahmi.myjetpackprosubmission.data.remote.ApiResponse
+import com.mfahmi.myjetpackprosubmission.data.remote.StatusApi.*
 import com.mfahmi.myjetpackprosubmission.utils.AppExecutors
 import com.mfahmi.myjetpackprosubmission.vo.ResourceValue
 
@@ -27,7 +27,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val myExecu
         }
     }
 
-    protected fun onFetchFailed() {}
+    private fun onFetchFailed() {}
 
     protected abstract fun loadFromDB(): LiveData<ResultType>
 

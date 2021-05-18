@@ -3,18 +3,18 @@ package com.mfahmi.myjetpackprosubmission.ui.fragments
 import android.os.Bundle
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mfahmi.myjetpackprosubmission.R
-import com.mfahmi.myjetpackprosubmission.adapter.TvShowRecyclerviewAdapter
 import com.mfahmi.myjetpackprosubmission.databinding.FragmentTvShowBinding
 import com.mfahmi.myjetpackprosubmission.di.Injection
+import com.mfahmi.myjetpackprosubmission.ui.adapter.TvShowRecyclerviewAdapter
+import com.mfahmi.myjetpackprosubmission.ui.viewmodels.TvShowViewModel
 import com.mfahmi.myjetpackprosubmission.utils.ViewModelFactoryTvShows
 import com.mfahmi.myjetpackprosubmission.utils.setVisibility
-import com.mfahmi.myjetpackprosubmission.viewmodels.TvShowViewModel
 import com.mfahmi.myjetpackprosubmission.vo.Status
+import com.shashank.sony.fancytoastlib.FancyToast
 
 class TvShowFragment : Fragment(R.layout.fragment_tv_show) {
 
@@ -41,10 +41,10 @@ class TvShowFragment : Fragment(R.layout.fragment_tv_show) {
                 }
                 Status.ERROR -> {
                     binding.pgTvShow.setVisibility(true)
-                    Toast.makeText(
+                    FancyToast.makeText(
                         context,
                         getString(R.string.something_when_wrong),
-                        Toast.LENGTH_SHORT
+                        FancyToast.LENGTH_SHORT, FancyToast.WARNING, false
                     ).show()
                 }
             }

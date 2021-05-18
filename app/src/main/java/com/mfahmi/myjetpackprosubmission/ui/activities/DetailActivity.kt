@@ -5,25 +5,24 @@ import android.viewbinding.library.activity.viewBinding
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.mfahmi.myjetpackprosubmission.R
+import com.mfahmi.myjetpackprosubmission.data.local.entities.MovieEntity
+import com.mfahmi.myjetpackprosubmission.data.local.entities.TvShowEntity
 import com.mfahmi.myjetpackprosubmission.databinding.ActivityDetailBinding
 import com.mfahmi.myjetpackprosubmission.di.Injection.movieInjectRepository
 import com.mfahmi.myjetpackprosubmission.di.Injection.tvShowInjectRepository
-import com.mfahmi.myjetpackprosubmission.repositories.local.entities.MovieEntity
-import com.mfahmi.myjetpackprosubmission.repositories.local.entities.TvShowEntity
 import com.mfahmi.myjetpackprosubmission.ui.fragments.MoviesFragment
+import com.mfahmi.myjetpackprosubmission.ui.viewmodels.DetailViewModel
 import com.mfahmi.myjetpackprosubmission.utils.ViewModelFactoryDetail
 import com.mfahmi.myjetpackprosubmission.utils.setDetailGlide
 import com.mfahmi.myjetpackprosubmission.utils.setVisibility
-import com.mfahmi.myjetpackprosubmission.viewmodels.DetailViewModel
+import com.shashank.sony.fancytoastlib.FancyToast
 
 class DetailActivity : AppCompatActivity() {
 
     private val binding: ActivityDetailBinding by viewBinding()
     private val viewModel: DetailViewModel by viewModels {
         ViewModelFactoryDetail(
-            application,
-            movieInjectRepository(applicationContext),
-            tvShowInjectRepository(applicationContext)
+            movieInjectRepository(applicationContext), tvShowInjectRepository(applicationContext)
         )
     }
 
@@ -62,6 +61,15 @@ class DetailActivity : AppCompatActivity() {
             tvVoteCountDetail.text = movie.voteCount.toString()
             tvOverview.text = movie.overview
             pgDetail.setVisibility(false)
+
+            viewModel.checkBookmarkMovie(movie.movieId).observe(this@DetailActivity) {
+                fabBookmark.setOnClickListener {
+                    val movieStatus = !movie.isBookmark
+                    viewModel.setBookmarkMovie(movie, movieStatus)
+                    showFancyToast(movieStatus)
+                }
+                setFabIcon(it)
+            }
         }
     }
 
@@ -75,6 +83,36 @@ class DetailActivity : AppCompatActivity() {
             tvOriginalLangDetail.text = tvShow.originalLanguage
             tvOverview.text = tvShow.overview
             pgDetail.setVisibility(false)
+
+            viewModel.checkBookmarkTvShow(tvShow.tvShowId).observe(this@DetailActivity) {
+                fabBookmark.setOnClickListener {
+                    val tvShowStatus = !tvShow.isBookmark
+                    viewModel.setBookmarkTvShow(tvShow, tvShowStatus)
+                    showFancyToast(tvShowStatus)
+                }
+                setFabIcon(it)
+            }
+        }
+    }
+
+    private fun showFancyToast(status: Boolean) {
+        if (status) {
+            FancyToast.makeText(
+                this, getString(R.string.msg_add), FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,
+                false
+            )
+        } else {
+            FancyToast.makeText(
+                this, getString(R.string.msg_remove), FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,
+                false
+            )
+        }
+    }
+
+    private fun setFabIcon(state: Boolean) {
+        with(binding) {
+            if (state) fabBookmark.setImageResource(R.drawable.ic_bookmark_filled)
+            else fabBookmark.setImageResource(R.drawable.ic_bookmark_outlined)
         }
     }
 }

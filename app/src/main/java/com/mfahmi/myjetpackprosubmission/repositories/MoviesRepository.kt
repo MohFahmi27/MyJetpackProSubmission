@@ -3,11 +3,11 @@ package com.mfahmi.myjetpackprosubmission.repositories
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.mfahmi.myjetpackprosubmission.repositories.local.LocalDataSource
-import com.mfahmi.myjetpackprosubmission.repositories.local.entities.MovieEntity
-import com.mfahmi.myjetpackprosubmission.repositories.remote.ApiResponse
-import com.mfahmi.myjetpackprosubmission.repositories.remote.RemoteDataSource
-import com.mfahmi.myjetpackprosubmission.repositories.remote.models.movies.ResponseItemMovies
+import com.mfahmi.myjetpackprosubmission.data.local.LocalDataSource
+import com.mfahmi.myjetpackprosubmission.data.local.entities.MovieEntity
+import com.mfahmi.myjetpackprosubmission.data.remote.ApiResponse
+import com.mfahmi.myjetpackprosubmission.data.remote.RemoteDataSource
+import com.mfahmi.myjetpackprosubmission.data.remote.models.movies.ResponseItemMovies
 import com.mfahmi.myjetpackprosubmission.utils.AppExecutors
 import com.mfahmi.myjetpackprosubmission.vo.ResourceValue
 
@@ -31,12 +31,15 @@ class MoviesRepository private constructor(
             }
     }
 
-    override fun getMoviesData(): LiveData<ResourceValue<PagedList<MovieEntity>>> {
-        val config = PagedList.Config.Builder()
+    private val config by lazy {
+        PagedList.Config.Builder()
             .setEnablePlaceholders(false)
             .setInitialLoadSizeHint(10)
             .setPageSize(10)
             .build()
+    }
+
+    override fun getMoviesData(): LiveData<ResourceValue<PagedList<MovieEntity>>> {
         return object :
             NetworkBoundResource<PagedList<MovieEntity>, ResponseItemMovies>(appExecutors) {
             override fun loadFromDB(): LiveData<PagedList<MovieEntity>> {
@@ -62,5 +65,9 @@ class MoviesRepository private constructor(
 
     override fun setBookmarkMovie(movieEntity: MovieEntity, status: Boolean) =
         appExecutors.diskIO().execute { localDataSource.updateMovieFromDb(movieEntity, status) }
+
+    override fun getBookmarkDataMovie(): LiveData<PagedList<MovieEntity>> {
+        return LivePagedListBuilder(localDataSource.getBookmarkMovieData(), config).build()
+    }
 
 }

@@ -3,8 +3,8 @@ package com.mfahmi.myjetpackprosubmission.db
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
-import com.mfahmi.myjetpackprosubmission.repositories.local.entities.MovieEntity
-import com.mfahmi.myjetpackprosubmission.repositories.local.entities.TvShowEntity
+import com.mfahmi.myjetpackprosubmission.data.local.entities.MovieEntity
+import com.mfahmi.myjetpackprosubmission.data.local.entities.TvShowEntity
 
 @Dao
 interface BookmarkDao {
@@ -25,12 +25,6 @@ interface BookmarkDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTvShow(tvShowEntity: List<TvShowEntity>)
-
-    @Delete
-    fun deleteMovieBookmarked(movieEntity: MovieEntity)
-
-    @Delete
-    fun deleteTvShowBookmarked(tvShowEntity: TvShowEntity)
 
     @Update
     fun updateBookmarkMovie(movieEntity: MovieEntity)

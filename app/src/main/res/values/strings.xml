@@ -12,10 +12,8 @@
     <string name="detail_page">Detail Page</string>
     <string name="overview_format">%s…</string>
     <string name="rating_format">%.1f /10</string>
-    <string name="duration_format_movie">%d mnt</string>
-    <string name="duration_format_tv_show">%d eps</string>
-    <string name="status">Status</string>
-    <string name="duration">Duration</string>
+    <string name="msg_add">You Bookmarked Something…</string>
+    <string name="msg_remove">You Removed Something…</string>
     <string name="add_bookmark">Add Bookmark</string>
     <string name="bookmark">Bookmark</string>
     <string name="favorite_description">Anything that you loved will be placed in here.</string>

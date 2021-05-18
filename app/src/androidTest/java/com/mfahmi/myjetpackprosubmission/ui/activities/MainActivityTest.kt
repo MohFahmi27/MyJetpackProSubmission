@@ -40,36 +40,51 @@ class MainActivityTest {
 
     @Test
     fun testDetailViewDataMovie() {
-        onView(withId(R.id.rv_movies)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        onView(withId(R.id.rv_movies)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
         onView(withId(R.id.img_poster_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.fab_bookmark)).check(matches(isDisplayed()))
         onView(isRoot()).perform(swipeUp())
         onView(withId(R.id.tv_title_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_release_date)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_rating_detail)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_tag_line)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_status_detail)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_duration)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_vote_count_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_original_lang_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_overview)).check(matches(isDisplayed()))
     }
 
     @Test
     fun testDetailViewDataTvShow() {
         onView(withText("Tv Shows")).perform(click())
-        onView(withId(R.id.rv_tv_shows)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        onView(withId(R.id.rv_tv_shows)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
         onView(withId(R.id.img_poster_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.fab_bookmark)).check(matches(isDisplayed()))
         onView(isRoot()).perform(swipeUp())
         onView(withId(R.id.tv_title_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_release_date)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_rating_detail)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_tag_line)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_status_detail)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_duration)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_vote_count_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_original_lang_detail)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_overview)).check(matches(isDisplayed()))
     }
 
     @Test
     fun testDetailBackButtonMovie() {
-        onView(withId(R.id.rv_movies)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        onView(withId(R.id.rv_movies)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
         onView(withId(R.id.btn_back_detail)).perform(click())
         onView(withId(R.id.rv_movies)).check(matches(isDisplayed()))
     }
@@ -77,9 +92,72 @@ class MainActivityTest {
     @Test
     fun testDetailBackButtonTvShow() {
         onView(withText("Tv Shows")).perform(click())
-        onView(withId(R.id.rv_tv_shows)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        onView(withId(R.id.rv_tv_shows)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
         onView(withId(R.id.btn_back_detail)).perform(click())
         onView(withId(R.id.rv_tv_shows)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun testAddToBookmarkMovie() {
+        onView(withId(R.id.rv_movies)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
+        onView(withId(R.id.fab_bookmark)).perform(click())
+        onView(withId(R.id.btn_back_detail)).perform(click())
+        onView(withId(R.id.action_bookmark)).perform(click())
+        onView(withId(R.id.rv_movies_favorite)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
+        onView(withId(R.id.img_poster_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.fab_bookmark)).check(matches(isDisplayed()))
+        onView(isRoot()).perform(swipeUp())
+        onView(withId(R.id.tv_title_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_release_date)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_rating_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_vote_count_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_original_lang_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_overview)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun testAddToBookmarkTvShow() {
+        onView(withText("Tv Shows")).perform(click())
+        onView(withId(R.id.rv_tv_shows)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
+        onView(withId(R.id.fab_bookmark)).perform(click())
+        onView(withId(R.id.btn_back_detail)).perform(click())
+        onView(withId(R.id.action_bookmark)).perform(click())
+        onView(withText("Tv Shows")).perform(click())
+        onView(withId(R.id.rv_tv_shows_favorite)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
+        onView(withId(R.id.img_poster_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.fab_bookmark)).check(matches(isDisplayed()))
+        onView(isRoot()).perform(swipeUp())
+        onView(withId(R.id.tv_title_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_release_date)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_rating_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_vote_count_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_original_lang_detail)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_overview)).check(matches(isDisplayed()))
     }
 
 }

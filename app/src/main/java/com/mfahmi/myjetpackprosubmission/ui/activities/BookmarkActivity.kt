@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mfahmi.myjetpackprosubmission.R
-import com.mfahmi.myjetpackprosubmission.adapter.FavoritePagerAdapter
 import com.mfahmi.myjetpackprosubmission.databinding.ActivityBookmarkBinding
+import com.mfahmi.myjetpackprosubmission.ui.adapter.FavoritePagerAdapter
 
 class BookmarkActivity : AppCompatActivity() {
     private val binding: ActivityBookmarkBinding by viewBinding()

@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.mfahmi.myjetpackprosubmission.repositories.local.entities.MovieEntity
-import com.mfahmi.myjetpackprosubmission.repositories.local.entities.TvShowEntity
+import com.mfahmi.myjetpackprosubmission.data.local.entities.MovieEntity
+import com.mfahmi.myjetpackprosubmission.data.local.entities.TvShowEntity
 import com.mfahmi.myjetpackprosubmission.utils.SingletonHolder
 
 @Database(entities = [MovieEntity::class, TvShowEntity::class], version = 1, exportSchema = false)
